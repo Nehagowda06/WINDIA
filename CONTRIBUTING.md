@@ -79,7 +79,20 @@ Before starting any work:
 
 > You **can** start working before assignment, but **do not open a PR** until the issue is assigned to you.
 
-### Rule 3: Pull Before You Push
+### Rule 3: Build Before You Push
+
+The frontend is deployed on Vercel. If your code doesn't build, it breaks the deployment for everyone.
+
+**Always run the build before pushing:**
+
+```bash
+cd frontend
+npm run build
+```
+
+If the build fails, **fix it before pushing**. Do not push broken code.
+
+### Rule 4: Pull Before You Push
 
 Every time before pushing your code:
 
@@ -98,7 +111,7 @@ git commit -m "your commit message"
 git push origin your-branch-name
 ```
 
-### Rule 4: Small, Clear Commits
+### Rule 5: Small, Clear Commits
 
 - Commit often with meaningful messages.
 - Don't dump everything into one giant commit.
@@ -115,7 +128,7 @@ Use prefixes:
 - `style:` — CSS / formatting (no logic change)
 - `refactor:` — code restructure (no feature change)
 
-### Rule 5: Open a PR (After Assignment Only)
+### Rule 6: Open a PR (After Assignment Only)
 
 1. Push your branch to your fork.
 2. Go to the **original repo** on GitHub.
@@ -125,12 +138,12 @@ Use prefixes:
    - Briefly describe what you changed.
 5. Request a review.
 
-### Rule 6: Never Push to Main
+### Rule 7: Never Push to Main
 
 - Never commit directly to `main`.
 - Never force push (`git push --force`). If you think you need to, ask first.
 
-### Rule 7: Pull Again After PR is Merged
+### Rule 8: Pull Again After PR is Merged
 
 Once your PR is merged, sync your fork:
 
@@ -156,6 +169,7 @@ git branch -d your-branch-name
 | Add upstream | `git remote add upstream https://github.com/OWNER/WINDIA.git` |
 | Sync main | `git pull upstream main` |
 | New branch | `git checkout -b branch-name` |
+| Test build | `cd frontend && npm run build` |
 | Stage changes | `git add .` |
 | Commit | `git commit -m "message"` |
 | Push branch | `git push origin branch-name` |
@@ -168,6 +182,7 @@ git branch -d your-branch-name
 
 - **Working on `main`** — always branch off.
 - **Not pulling before pushing** — causes merge conflicts.
+- **Not running `npm run build` before pushing** — breaks the Vercel deployment.
 - **Opening a PR without an assigned issue** — it will be closed.
 - **Force pushing** — don't. Ask for help instead.
 - **Huge PRs with unrelated changes** — keep PRs focused on one task.
