@@ -1,0 +1,72 @@
+:root {
+  /* Primary WIN-DIA Brand Colors */
+  --win-dia-primary: #E86A4A;
+  --win-dia-primary-light: #F59B7A;
+  --win-dia-primary-lighter: #FDE8E1;
+  --win-dia-primary-dark: #C94E2E;
+  --win-dia-primary-gradient: linear-gradient(135deg, #F59B7A 0%, #E86A4A 100%);
+  
+  /* Secondary Colors */
+  --win-dia-secondary: #2D6A4F;
+  --win-dia-secondary-light: #40916C;
+  --win-dia-secondary-dark: #1B4332;
+  
+  /* Neutral Colors */
+  --win-dia-cream: #FFF8F0;
+  --win-dia-cream-dark: #F5EDE3;
+  --win-dia-white: #FFFFFF;
+  --win-dia-off-white: #FAFAFA;
+  --win-dia-gray-light: #F0F0F0;
+  --win-dia-gray-medium: #E0E0E0;
+  --win-dia-gray: #757575;
+  --win-dia-gray-dark: #424242;
+  
+  /* Text Colors */
+  --win-dia-text-primary: #2C2C2C;
+  --win-dia-text-secondary: #5C4D3C;
+  --win-dia-text-brown: #6B4F32;
+  --win-dia-text-light: #787878;
+  
+  /* Accent Colors */
+  --win-dia-success: #2D6A4F;
+  --win-dia-success-light: #D8F3DC;
+  --win-dia-warning: #FFB703;
+  --win-dia-error: #E63946;
+  --win-dia-gold: #D4A373;
+  
+  /* Shadows */
+  --win-dia-shadow-sm: 0 2px 8px rgba(232, 106, 74, 0.08);
+  --win-dia-shadow-md: 0 8px 24px rgba(232, 106, 74, 0.12);
+  --win-dia-shadow-lg: 0 16px 40px rgba(232, 106, 74, 0.15);
+  --win-dia-shadow-xl: 0 24px 60px rgba(232, 106, 74, 0.2);
+  
+  /* Border Radius */
+  --win-dia-radius-sm: 8px;
+  --win-dia-radius-md: 12px;
+  --win-dia-radius-lg: 20px;
+  --win-dia-radius-xl: 32px;
+  --win-dia-radius-full: 9999px;
+  
+  /* Spacing */
+  --win-dia-spacing-xs: 4px;
+  --win-dia-spacing-sm: 8px;
+  --win-dia-spacing-md: 16px;
+  --win-dia-spacing-lg: 24px;
+  --win-dia-spacing-xl: 32px;
+  --win-dia-spacing-2xl: 48px;
+  --win-dia-spacing-3xl: 64px;
+  --win-dia-spacing-4xl: 80px;
+  
+  /* Typography */
+  --win-dia-font-primary: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --win-dia-font-secondary: 'Playfair Display', Georgia, serif;
+  
+  /* Transitions */
+  --win-dia-transition-fast: 0.2s ease;
+  --win-dia-transition-base: 0.3s ease;
+  --win-dia-transition-slow: 0.5s ease;
+  
+  /* Container Width */
+  --win-dia-container-max: 1280px;
+  --win-dia-container-padding: 24px;
+}
