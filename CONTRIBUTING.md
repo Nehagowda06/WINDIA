@@ -21,7 +21,7 @@ cd WINDIA
 This links your fork to the original repo so you can pull the latest changes.
 
 ```bash
-git remote add upstream https://github.com/ORIGINAL_OWNER/WINDIA.git
+git remote add upstream https://github.com/Nehagowd06/WINDIA.git
 ```
 
 Verify it:
