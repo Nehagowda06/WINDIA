@@ -1,4 +1,4 @@
-// File: D:\web-dev project\WINDIA\frontend-next\app\shop\page.jsx
+// File: C:\Users\vsanj\WINDIA\frontend-next\app\shop\page.jsx
 import * as entry from '../../../../app/shop/page.js'
 import type { ResolvingMetadata, ResolvingViewport } from 'next/dist/lib/metadata/types/metadata-interface.js'
 

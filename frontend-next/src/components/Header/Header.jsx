@@ -12,7 +12,6 @@ import {
   FiX, 
   FiSearch, 
   FiHome,
-  FiChevronDown 
 } from 'react-icons/fi';
 import './Header.css';
 
@@ -29,12 +28,23 @@ const Header = () => {
   const location = usePathname();
 
   useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50);
-    };
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+  let lastScrollY = 0;
+
+  const handleScroll = () => {
+    const currentScroll = window.scrollY;
+
+    if (currentScroll > 20) {
+      setIsScrolled(true);
+    } else {
+      setIsScrolled(false);
+    }
+
+    lastScrollY = currentScroll;
+  };
+
+  window.addEventListener('scroll', handleScroll);
+  return () => window.removeEventListener('scroll', handleScroll);
+}, []);
 
   // Close mobile menu on route change
   useEffect(() => {

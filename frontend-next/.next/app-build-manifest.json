@@ -18,35 +18,10 @@
       "static/css/app/shop/page.css",
       "static/chunks/app/shop/page.js"
     ],
-    "/health-benefits/page": [
+    "/_not-found/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
-      "static/css/app/health-benefits/page.css",
-      "static/chunks/app/health-benefits/page.js"
-    ],
-    "/our-story/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/css/app/our-story/page.css",
-      "static/chunks/app/our-story/page.js"
-    ],
-    "/vision/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/css/app/vision/page.css",
-      "static/chunks/app/vision/page.js"
-    ],
-    "/recipes/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/css/app/recipes/page.css",
-      "static/chunks/app/recipes/page.js"
-    ],
-    "/contact/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/css/app/contact/page.css",
-      "static/chunks/app/contact/page.js"
+      "static/chunks/app/_not-found/page.js"
     ]
   }
 }
