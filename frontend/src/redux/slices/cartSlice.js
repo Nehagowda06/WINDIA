@@ -1,3 +1,11 @@
+
+if (typeof window === 'undefined') {
+  global.localStorage = {
+    getItem: () => null,
+    setItem: () => {},
+    removeItem: () => {}
+  };
+}
 import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {

@@ -1,5 +1,7 @@
+'use client';
+
 import React from 'react';
-import { Link } from 'react-router-dom';
+import Link from 'next/link';
 import { useDispatch, useSelector } from 'react-redux';
 import { FiShoppingCart, FiHeart, FiCheck } from 'react-icons/fi';
 import { addToCart } from '../../redux/actions/cartActions';
@@ -45,7 +47,7 @@ const ProductCard = ({ product, index }) => {
       className="product-card fade-in-up"
       style={{ animationDelay: `${index * 0.1}s` }}
     >
-      <Link to={`/product/${product._id}`} className="product-card-link">
+      <Link href={`/product/${product._id}`} className="product-card-link">
         <div className="product-image-wrapper">
           <img src={product.image} alt={product.name} className="product-image" />
           {product.countInStock > 0 ? (

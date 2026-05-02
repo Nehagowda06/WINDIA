@@ -1,5 +1,8 @@
+'use client';
+
 import React, { useState, useEffect } from 'react';
-import { Link, useNavigate, useLocation } from 'react-router-dom';
+import Link from 'next/link';
+import { useRouter, usePathname } from 'next/navigation';
 import { useSelector } from 'react-redux';
 import { 
   FiShoppingCart, 
@@ -22,8 +25,8 @@ const Header = () => {
   
   const cartItems = useSelector((state) => state.cart.cartItems);
   const wishlistItems = useSelector((state) => state.wishlist.wishlistItems);
-  const navigate = useNavigate();
-  const location = useLocation();
+  const router = useRouter();
+  const location = usePathname();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -36,12 +39,12 @@ const Header = () => {
   // Close mobile menu on route change
   useEffect(() => {
     setIsMobileMenuOpen(false);
-  }, [location.pathname]);
+  }, [location]);
 
   const handleSearch = (e) => {
     e.preventDefault();
     if (searchQuery.trim()) {
-      navigate(`/shop?search=${encodeURIComponent(searchQuery)}`);
+      router.push(`/shop?search=${encodeURIComponent(searchQuery)}`);
       setIsSearchOpen(false);
       setSearchQuery('');
     }
@@ -58,10 +61,11 @@ const Header = () => {
   ];
 
   const isActive = (path) => {
+    const currentPath = location || '';
     if (path === '/') {
-      return location.pathname === '/';
+      return currentPath === '/';
     }
-    return location.pathname.startsWith(path);
+    return currentPath.startsWith(path);
   };
 
   return (
@@ -79,7 +83,7 @@ const Header = () => {
         </button>
 
         {/* Brand Logo */}
-        <Link to="/" className="navbar-brand">
+        <Link href="/" className="navbar-brand">
           {!logoError ? (
             <img 
               src="/images/windia-logo.png" 
@@ -116,8 +120,7 @@ const Header = () => {
           <ul className="navbar-nav">
             {navItems.map((item) => (
               <li key={item.name} className="nav-item">
-                <Link 
-                  to={item.path}
+                <Link href={item.path}
                   className={`nav-link ${isActive(item.path) ? 'nav-link-active' : ''}`}
                 >
                   {item.name === 'Home' && <FiHome className="nav-link-icon" />}
@@ -147,7 +150,7 @@ const Header = () => {
           </button>
           
           {/* Wishlist */}
-          <Link to="/wishlist" className="navbar-action-btn" aria-label="Wishlist">
+          <Link href="/wishlist" className="navbar-action-btn" aria-label="Wishlist">
             <FiHeart />
             {wishlistItems.length > 0 && (
               <span className="navbar-badge">{wishlistItems.length}</span>
@@ -155,7 +158,7 @@ const Header = () => {
           </Link>
           
           {/* Cart */}
-          <Link to="/cart" className="navbar-action-btn navbar-cart-btn" aria-label="Cart">
+          <Link href="/cart" className="navbar-action-btn navbar-cart-btn" aria-label="Cart">
             <FiShoppingCart />
             {cartItems.length > 0 && (
               <span className="navbar-badge navbar-badge-cart">{cartItems.length}</span>
@@ -163,7 +166,7 @@ const Header = () => {
           </Link>
           
           {/* Account */}
-          <Link to="/track-order" className="navbar-action-btn navbar-account-btn" aria-label="Account">
+          <Link href="/track-order" className="navbar-action-btn navbar-account-btn" aria-label="Account">
             <FiUser />
           </Link>
         </div>
