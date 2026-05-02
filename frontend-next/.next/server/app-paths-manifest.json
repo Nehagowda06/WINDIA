@@ -1,9 +1,16 @@
 {
+  "/_not-found/page": "app/_not-found/page.js",
+  "/health-benefits/page": "app/health-benefits/page.js",
+  "/checkout/page": "app/checkout/page.js",
+  "/cart/page": "app/cart/page.js",
   "/page": "app/page.js",
-  "/shop/page": "app/shop/page.js",
-  "/contact/page": "app/contact/page.js",
   "/our-story/page": "app/our-story/page.js",
-  "/vision/page": "app/vision/page.js",
+  "/contact/page": "app/contact/page.js",
+  "/product/[id]/page": "app/product/[id]/page.js",
+  "/recipes/[slug]/page": "app/recipes/[slug]/page.js",
+  "/shop/page": "app/shop/page.js",
   "/recipes/page": "app/recipes/page.js",
-  "/health-benefits/page": "app/health-benefits/page.js"
+  "/vision/page": "app/vision/page.js",
+  "/track-order/page": "app/track-order/page.js",
+  "/wishlist/page": "app/wishlist/page.js"
 }
