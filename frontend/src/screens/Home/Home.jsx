@@ -1,3 +1,4 @@
+
 'use client';
 if (typeof window === 'undefined') {
   global.localStorage = {
@@ -201,53 +202,68 @@ const Home = () => {
 
       {/* Hero Section */}
       <section className="hero" aria-label="Hero section">
-        <div className="hero-bg">
-          <div className="hero-bg-image" role="presentation"></div>
-          <div className="hero-bg-overlay" role="presentation"></div>
+  <div className="hero-bg">
+    <div className="hero-bg-image" role="presentation"></div>
+    <div className="hero-bg-overlay" role="presentation"></div>
+  </div>
+
+  <div className="hero-container">
+    <div className="hero-content">
+      <span className="hero-badge">Ancient Wisdom • Modern Wellness</span>
+
+      <h1 className="hero-title">
+        Coconut-Infused
+        <br />
+        <span>THINS</span>
+      </h1>
+
+      <p className="hero-description">
+        Experience the perfect blend of tradition and nutrition. Our coconut
+        flour khakhras are crafted to nourish your body and delight your
+        taste buds.
+      </p>
+
+      <div className="hero-buttons">
+        <Link href="/shop" className="btn-primary">
+          Shop Now
+        </Link>
+        <Link href="/our-story" className="btn-outline">
+          Our Story
+        </Link>
+      </div>
+
+      <div className="hero-stats">
+        <div className="stat">
+          <span className="stat-value">44</span>
+          <span className="stat-label">Glycemic Index</span>
         </div>
-        <div className="hero-container">
-          <div className="hero-content fade-left">
-            <span className="hero-badge">Ancient Wisdom • Modern Wellness</span>
-            <h1 className="hero-title">
-              Coconut-Infused<br />
-              <span>THINS</span>
-            </h1>
-            <p className="hero-description">
-              Experience the perfect blend of tradition and nutrition. Our coconut flour khakhras 
-              are crafted to nourish your body and delight your taste buds.
-            </p>
-            <div className="hero-buttons">
-              <Link href="/shop" className="btn-primary">Shop Now</Link>
-              <Link href="/our-story" className="btn-outline">Our Story</Link>
-            </div>
-            <div className="hero-stats">
-              <div className="stat">
-                <span className="stat-value">44</span>
-                <span className="stat-label">Glycemic Index</span>
-              </div>
-              <div className="stat">
-                <span className="stat-value">4.85g</span>
-                <span className="stat-label">Dietary Fiber</span>
-              </div>
-              <div className="stat">
-                <span className="stat-value">22g</span>
-                <span className="stat-label">Plant Protein</span>
-              </div>
-            </div>
-          </div>
-          <div className="hero-image fade-right">
-            <div className="hero-image-wrapper">
-              {/* Hero image would go here */}
-            </div>
-          </div>
+        <div className="stat">
+          <span className="stat-value">4.85g</span>
+          <span className="stat-label">Dietary Fiber</span>
         </div>
-        <div className="hero-wave" aria-hidden="true">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 120" preserveAspectRatio="none">
-            <path d="M0,64L80,58.7C160,53,320,43,480,48C640,53,800,75,960,80C1120,85,1280,75,1360,69.3L1440,64L1440,120L1360,120C1280,120,1120,120,960,120C800,120,640,120,480,120C320,120,160,120,80,120L0,120Z" 
-                  fill="#FDF3E8"></path>
-          </svg>
+        <div className="stat">
+          <span className="stat-value">22g</span>
+          <span className="stat-label">Plant Protein</span>
         </div>
-      </section>
+      </div>
+    </div>
+
+    <div className="hero-image">
+      <div className="hero-image-wrapper">
+        <img src={heroImage} alt="WIN-DIA Khakhra" loading="eager" />
+      </div>
+    </div>
+  </div>
+
+  <div className="hero-wave" aria-hidden="true">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 120" preserveAspectRatio="none">
+      <path
+        d="M0,64L80,58.7C160,53,320,43,480,48C640,53,800,75,960,80C1120,85,1280,75,1360,69.3L1440,64L1440,120L1360,120C1280,120,1120,120,960,120C800,120,640,120,480,120C320,120,160,120,80,120L0,120Z"
+        fill="#FDF3E8"
+      ></path>
+    </svg>
+  </div>
+</section>
 
       {/* Global Reach Section */}
       <section className="global-reach" aria-label="Global reach section">
