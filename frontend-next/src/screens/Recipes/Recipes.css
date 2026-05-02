@@ -1,0 +1,912 @@
+/* ═══════════════════════════════════════════════════════════════
+   WIN-DIA Recipes Page — Health Benefits Style
+   ═══════════════════════════════════════════════════════════════ */
+
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,600&family=Outfit:wght@300;400;500;600;700&display=swap');
+
+/* ─── Variables ─────────────────────────────────────────────────── */
+.win-rc-page {
+  --win-cream: #FDF9F3;
+  --win-cream-dk: #E5D9C4;
+  --win-cream-dkr: #D4C4A8;
+  --win-orange: #D9845A;
+  --win-orange-lt: #f9e0d4;
+  --win-orange-pale: #FEF3E8;
+  --win-green: #8FA68A;
+  --win-green-pale: #E2EDE7;
+  --win-white: #FFFFFF;
+  --win-text: #2C1F14;
+  --win-text-soft: #8A6F5A;
+  --win-shadow-sm: 0 2px 14px rgba(44,31,20,0.08);
+  --win-shadow-md: 0 8px 36px rgba(44,31,20,0.12);
+  --win-shadow-lg: 0 20px 60px rgba(44,31,20,0.16);
+  --win-r-sm: 6px;
+  --win-r-md: 14px;
+  --win-r-lg: 22px;
+  --win-r-xl: 32px;
+  --win-font-d: 'Cormorant Garamond', Georgia, serif;
+  --win-font-b: 'Outfit', system-ui, sans-serif;
+  --win-ease: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  --win-ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+/* ─── Base ──────────────────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+.win-rc-page {
+  font-family: var(--win-font-b);
+  background: var(--win-cream);
+  color: var(--win-text);
+  overflow-x: hidden;
+}
+
+.win-rc-container {
+  max-width: 1160px;
+  margin: 0 auto;
+  padding: 0 28px;
+}
+
+.win-rc-section {
+  padding: 88px 0;
+}
+
+/* ─── Typography ───────────────────────────────────────────────── */
+.win-rc-h2 {
+  font-family: var(--win-font-d);
+  font-size: clamp(28px, 3.5vw, 44px);
+  font-weight: 600;
+  color: var(--win-text);
+  line-height: 1.15;
+  margin-bottom: 12px;
+}
+
+.win-rc-overline {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--win-orange);
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.win-rc-section-sub {
+  font-size: 16px;
+  color: var(--win-text-soft);
+  max-width: 560px;
+  line-height: 1.7;
+  margin-top: 4px;
+}
+
+.win-rc-section-hdr {
+  margin-bottom: 44px;
+}
+
+.win-rc-section-hdr--row {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+/* ═════════════════════════════════════════════════════════════════
+   HERO SECTION
+   ═════════════════════════════════════════════════════════════════ */
+.win-rc-hero {
+  min-height: 80vh;
+  position: relative;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  background-image: url('./rec-hero.jpeg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.win-rc-hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(44,31,20,0.6) 0%, rgba(44,31,20,0.3) 100%);
+  pointer-events: none;
+}
+
+.win-rc-hero-content {
+  position: relative;
+  z-index: 1;
+  max-width: 1160px;
+  margin: 0 auto;
+  padding: 80px 28px;
+  width: 100%;
+  text-align: center;
+}
+
+.win-rc-hero-left {
+  max-width: 780px;
+  margin: 0 auto;
+}
+
+.win-rc-hero-eyebrow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  color: var(--win-orange);
+  margin-bottom: 22px;
+}
+
+.win-rc-eyebrow-bar {
+  display: block;
+  width: 30px;
+  height: 2px;
+  background: var(--win-orange);
+  flex-shrink: 0;
+}
+
+.win-rc-hero-h1 {
+  font-family: var(--win-font-d);
+  font-size: clamp(42px, 6vw, 90px);
+  font-weight: 600;
+  line-height: 1.05;
+  color: #ffffff;
+  margin-bottom: 22px;
+  text-shadow: 0 6px 20px rgba(0,0,0,0.5);
+}
+
+.win-rc-hero-h1 em {
+  font-style: italic;
+}
+
+.win-rc-hero-desc {
+  font-size: 17px;
+  color: white;
+  line-height: 1.7;
+  max-width: 560px;
+  margin: 0 auto 36px;
+  text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+}
+
+/* ═════════════════════════════════════════════════════════════════
+   ANIMATIONS
+   ═════════════════════════════════════════════════════════════════ */
+.win-rc-animated-card {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.6s var(--win-ease), transform 0.6s var(--win-ease);
+}
+
+.win-rc-animated-in {
+  opacity: 1 !important;
+  transform: translateY(0) !important;
+}
+
+/* ═════════════════════════════════════════════════════════════════
+   GRID LAYOUTS
+   ═════════════════════════════════════════════════════════════════ */
+.win-rc-categories-grid,
+.win-rc-quick-grid,
+.win-rc-dips-grid,
+.win-rc-all-grid,
+.win-rc-meal-grid {
+  display: grid;
+  gap: 24px;
+  margin-top: 20px;
+}
+
+.win-rc-categories-grid {
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+}
+
+.win-rc-quick-grid {
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+}
+
+.win-rc-dips-grid {
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+}
+
+.win-rc-all-grid {
+  grid-template-columns: repeat(4, 1fr);
+}
+
+.win-rc-meal-grid {
+  grid-template-columns: repeat(4, 1fr);
+}
+
+/* ═════════════════════════════════════════════════════════════════
+   CATEGORY CARDS
+   ═════════════════════════════════════════════════════════════════ */
+.win-rc-categories-section {
+  background: var(--win-white);
+}
+
+.win-rc-cat-card {
+  background: var(--win-white);
+  border: 1px solid var(--win-cream-dk);
+  border-radius: var(--win-r-lg);
+  overflow: hidden;
+  transition: all 0.3s var(--win-ease);
+}
+
+.win-rc-cat-card:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--win-shadow-md);
+  border-color: var(--win-orange);
+}
+
+.win-rc-cat-accent-bar {
+  height: 5px;
+  background: var(--win-cat-accent, var(--win-orange));
+  transition: height 0.3s;
+}
+
+.win-rc-cat-hovered .win-rc-cat-accent-bar {
+  height: 8px;
+}
+
+.win-rc-cat-image {
+  height: 160px;
+  overflow: hidden;
+}
+
+.win-rc-cat-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s var(--win-ease);
+}
+
+.win-rc-cat-card:hover .win-rc-cat-img {
+  transform: scale(1.05);
+}
+
+.win-rc-cat-body {
+  padding: 22px 20px 24px;
+}
+
+.win-rc-cat-count {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--win-orange);
+  margin-bottom: 6px;
+}
+
+.win-rc-cat-title {
+  font-family: var(--win-font-d);
+  font-size: 20px;
+  font-weight: 600;
+  color: var(--win-text);
+  margin-bottom: 8px;
+}
+
+.win-rc-cat-sub {
+  font-size: 13px;
+  color: var(--win-text-soft);
+  line-height: 1.5;
+  margin-bottom: 16px;
+}
+
+.win-rc-cat-arrow {
+  display: inline-block;
+  font-size: 16px;
+  color: var(--win-orange);
+  transform: translateX(0);
+  transition: transform 0.3s;
+}
+
+.win-rc-cat-hovered .win-rc-cat-arrow {
+  transform: translateX(6px);
+}
+
+.win-rc-cat-card-link {
+  text-decoration: none;
+  display: block;
+  height: 100%;
+}
+
+/* ═════════════════════════════════════════════════════════════════
+   QUICK RECIPE CARDS
+   ═════════════════════════════════════════════════════════════════ */
+.win-rc-quick-section {
+  background: var(--win-cream);
+}
+
+.win-rc-quick-card {
+  background: var(--win-white);
+  border: 1px solid var(--win-cream-dk);
+  border-radius: var(--win-r-lg);
+  overflow: hidden;
+  transition: all 0.3s var(--win-ease);
+}
+
+.win-rc-quick-card:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--win-shadow-md);
+  border-color: var(--win-orange);
+}
+
+.win-rc-quick-img {
+  height: 140px;
+  position: relative;
+  overflow: hidden;
+}
+
+.win-rc-quick-img-bg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s var(--win-ease);
+}
+
+.win-rc-quick-card:hover .win-rc-quick-img-bg {
+  transform: scale(1.05);
+}
+
+.win-rc-quick-time {
+  position: absolute;
+  bottom: 12px;
+  left: 12px;
+  background: rgba(44,31,20,0.7);
+  backdrop-filter: blur(6px);
+  color: var(--win-white);
+  font-size: 11px;
+  font-weight: 700;
+  padding: 4px 10px;
+  border-radius: 100px;
+  z-index: 2;
+}
+
+.win-rc-quick-body {
+  padding: 16px;
+}
+
+.win-rc-quick-diff {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  display: block;
+  margin-bottom: 4px;
+}
+
+.win-rc-quick-title {
+  font-family: var(--win-font-d);
+  font-size: 17px;
+  font-weight: 600;
+  color: var(--win-text);
+  margin-bottom: 6px;
+}
+
+.win-rc-quick-sub {
+  font-size: 12px;
+  color: var(--win-text-soft);
+}
+
+.win-rc-quick-card-link {
+  text-decoration: none;
+  display: block;
+  height: 100%;
+}
+
+/* ═════════════════════════════════════════════════════════════════
+   RECIPE CARDS
+   ═════════════════════════════════════════════════════════════════ */
+.win-rc-all-section {
+  background: var(--win-white);
+}
+
+.win-rc-recipe-card {
+  background: var(--win-cream);
+  border: 1px solid var(--win-cream-dk);
+  border-radius: var(--win-r-lg);
+  overflow: hidden;
+  transition: all 0.3s var(--win-ease);
+}
+
+.win-rc-recipe-card:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--win-shadow-md);
+  border-color: var(--win-orange);
+}
+
+.win-rc-card-img-placeholder {
+  height: 200px;
+  position: relative;
+  overflow: hidden;
+  background: var(--win-cream-dk);
+}
+
+.win-rc-card-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s var(--win-ease);
+}
+
+.win-rc-recipe-card:hover .win-rc-card-img {
+  transform: scale(1.05);
+}
+
+.win-rc-card-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, transparent 50%, rgba(44,31,20,0.35) 100%);
+  pointer-events: none;
+}
+
+.win-rc-card-flavor-tag {
+  position: absolute;
+  bottom: 12px;
+  left: 12px;
+  font-family: var(--win-font-d);
+  font-size: 20px;
+  font-weight: 600;
+  font-style: italic;
+  color: rgba(255,255,255,0.95);
+  text-shadow: 0 1px 3px rgba(0,0,0,0.3);
+  z-index: 2;
+}
+
+.win-rc-card-time-badge {
+  position: absolute;
+  bottom: 12px;
+  right: 12px;
+  background: rgba(44,31,20,0.7);
+  backdrop-filter: blur(6px);
+  color: var(--win-white);
+  font-size: 11px;
+  font-weight: 700;
+  padding: 4px 10px;
+  border-radius: 100px;
+  z-index: 2;
+}
+
+.win-rc-card-body {
+  padding: 18px;
+}
+
+.win-rc-card-rating {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  margin-bottom: 8px;
+}
+
+.win-rc-star {
+  color: var(--win-orange);
+  font-size: 13px;
+}
+
+.win-rc-reviews {
+  font-size: 12px;
+  color: var(--win-text-soft);
+}
+
+.win-rc-card-title {
+  font-family: var(--win-font-d);
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--win-text);
+  margin-bottom: 10px;
+}
+
+.win-rc-card-meta {
+  display: flex;
+  gap: 12px;
+  font-size: 12px;
+  color: var(--win-text-soft);
+  margin-bottom: 12px;
+}
+
+.win-rc-difficulty {
+  font-weight: 700;
+  color: var(--win-orange);
+}
+
+.win-rc-card-tags {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+.win-rc-tag {
+  font-size: 11px;
+  font-weight: 600;
+  padding: 4px 10px;
+  background: var(--win-orange-pale);
+  color: var(--win-orange);
+  border-radius: 100px;
+}
+
+.win-rc-recipe-card-link {
+  text-decoration: none;
+  display: block;
+  height: 100%;
+}
+
+/* Load More Button */
+.win-rc-recipe-count {
+  font-size: 14px;
+  color: var(--win-text-soft);
+  font-weight: 500;
+}
+
+.win-rc-load-more-wrap {
+  text-align: center;
+  margin-top: 44px;
+}
+
+.win-rc-load-more {
+  padding: 16px 44px;
+  background: transparent;
+  border: 2px solid var(--win-orange);
+  border-radius: 100px;
+  font-family: var(--win-font-b);
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--win-orange);
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.win-rc-load-more:hover {
+  background: var(--win-orange);
+  color: var(--win-white);
+  box-shadow: 0 6px 24px rgba(217,132,90,0.3);
+}
+
+/* ═════════════════════════════════════════════════════════════════
+   MEAL PREP CARDS
+   ═════════════════════════════════════════════════════════════════ */
+.win-rc-meal-section {
+  background: var(--win-cream);
+}
+
+.win-rc-meal-card {
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+  background: var(--win-white);
+  border: 1px solid var(--win-cream-dk);
+  border-radius: var(--win-r-lg);
+  padding: 24px 20px;
+  transition: all 0.3s var(--win-ease);
+}
+
+.win-rc-meal-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--win-shadow-md);
+  border-color: var(--win-orange);
+}
+
+.win-rc-meal-cal {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: var(--win-orange-pale);
+  border-radius: var(--win-r-md);
+  padding: 12px 10px;
+  min-width: 60px;
+}
+
+.win-rc-meal-cal strong {
+  font-family: var(--win-font-d);
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--win-orange);
+}
+
+.win-rc-meal-cal span {
+  font-size: 10px;
+  color: var(--win-orange);
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.win-rc-meal-body h3 {
+  font-family: var(--win-font-d);
+  font-size: 17px;
+  font-weight: 600;
+  color: var(--win-text);
+  margin-bottom: 6px;
+}
+
+.win-rc-meal-body p {
+  font-size: 13px;
+  color: var(--win-text-soft);
+  line-height: 1.55;
+}
+
+/* ═════════════════════════════════════════════════════════════════
+   DIP CARDS
+   ═════════════════════════════════════════════════════════════════ */
+.win-rc-dips-section {
+  background: var(--win-white);
+}
+
+.win-rc-dip-card {
+  background: var(--win-cream);
+  border: 1px solid var(--win-cream-dk);
+  border-radius: var(--win-r-lg);
+  padding: 24px 22px;
+  transition: all 0.3s var(--win-ease);
+  position: relative;
+  overflow: hidden;
+}
+
+.win-rc-dip-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, var(--win-orange), var(--win-orange-lt));
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.4s var(--win-ease);
+}
+
+.win-rc-dip-card:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--win-shadow-md);
+  border-color: var(--win-orange);
+}
+
+.win-rc-dip-card:hover::before {
+  transform: scaleX(1);
+}
+
+.win-rc-dip-pill {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  padding: 4px 12px;
+  background: var(--win-orange-pale);
+  color: var(--win-orange);
+  border-radius: 100px;
+  margin-bottom: 12px;
+}
+
+.win-rc-dip-title {
+  font-family: var(--win-font-d);
+  font-size: 20px;
+  font-weight: 600;
+  color: var(--win-text);
+  margin-bottom: 8px;
+}
+
+.win-rc-dip-pairing {
+  font-size: 13px;
+  color: var(--win-text-soft);
+  line-height: 1.5;
+  margin-bottom: 14px;
+}
+
+.win-rc-dip-diff {
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.win-rc-dip-card-link {
+  text-decoration: none;
+  display: block;
+  height: 100%;
+}
+
+/* ═════════════════════════════════════════════════════════════════
+   SUBMIT CTA
+   ═════════════════════════════════════════════════════════════════ */
+.win-rc-submit-section {
+  background: linear-gradient(135deg, #E86A2A, #D9845A);
+  padding: 88px 0;
+  position: relative;
+}
+
+.win-rc-submit-panel {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 64px;
+  align-items: center;
+}
+
+.win-rc-submit-h {
+  font-family: var(--win-font-d);
+  font-size: clamp(32px, 4vw, 52px);
+  font-weight: 600;
+  color: var(--win-white);
+  line-height: 1.1;
+  margin-bottom: 16px;
+}
+
+.win-rc-submit-text p {
+  font-size: 16px;
+  color: rgba(255,255,255,0.85);
+  line-height: 1.7;
+}
+
+.win-rc-submit-right {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.win-rc-submit-prize {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  background: rgba(255,255,255,0.15);
+  border: 1px solid rgba(255,255,255,0.25);
+  border-radius: var(--win-r-md);
+  padding: 16px 22px;
+}
+
+.win-rc-submit-prize strong {
+  font-family: var(--win-font-d);
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--win-white);
+}
+
+.win-rc-submit-prize span {
+  font-size: 14px;
+  color: rgba(255,255,255,0.8);
+}
+
+.win-rc-submit-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 18px 40px;
+  background: var(--win-white);
+  color: var(--win-orange);
+  border-radius: 100px;
+  text-decoration: none;
+  font-family: var(--win-font-b);
+  font-size: 15px;
+  font-weight: 700;
+  transition: all 0.3s;
+  box-shadow: 0 6px 24px rgba(0,0,0,0.1);
+}
+
+.win-rc-submit-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 36px rgba(0,0,0,0.15);
+}
+
+/* ═════════════════════════════════════════════════════════════════
+   NEWSLETTER
+   ═════════════════════════════════════════════════════════════════ */
+.win-rc-newsletter-section {
+  background: var(--win-cream);
+}
+
+.win-rc-newsletter-inner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: center;
+}
+
+.win-rc-newsletter-text p {
+  font-size: 16px;
+  color: var(--win-text-soft);
+  line-height: 1.7;
+  margin-top: 10px;
+}
+
+.win-rc-newsletter-form {
+  display: flex;
+  background: var(--win-white);
+  border-radius: 100px;
+  overflow: hidden;
+  border: 1px solid var(--win-cream-dkr);
+  margin-bottom: 12px;
+}
+
+.win-rc-newsletter-form input {
+  flex: 1;
+  padding: 16px 24px;
+  border: none;
+  outline: none;
+  font-family: var(--win-font-b);
+  font-size: 15px;
+}
+
+.win-rc-newsletter-form button {
+  padding: 16px 28px;
+  background: linear-gradient(135deg, var(--win-orange), var(--win-orange-lt));
+  color: var(--win-white);
+  border: none;
+  font-family: var(--win-font-b);
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.3s;
+  white-space: nowrap;
+}
+
+.win-rc-newsletter-form button:hover {
+  background: linear-gradient(135deg, var(--win-orange-lt), var(--win-orange));
+}
+
+.win-rc-newsletter-success {
+  padding: 18px 24px;
+  background: var(--win-green-pale);
+  border: 1px solid var(--win-green);
+  border-radius: var(--win-r-md);
+  color: var(--win-green);
+  font-size: 15px;
+  font-weight: 600;
+  margin-bottom: 12px;
+}
+
+.win-rc-newsletter-bonus {
+  font-size: 13px;
+  color: var(--win-text-soft);
+}
+
+/* ═════════════════════════════════════════════════════════════════
+   RESPONSIVE
+   ═════════════════════════════════════════════════════════════════ */
+@media (max-width: 1100px) {
+  .win-rc-all-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  .win-rc-meal-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 900px) {
+  .win-rc-all-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .win-rc-categories-grid,
+  .win-rc-quick-grid,
+  .win-rc-dips-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .win-rc-submit-panel {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+  .win-rc-newsletter-inner {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+}
+
+@media (max-width: 640px) {
+  .win-rc-section {
+    padding: 60px 0;
+  }
+  .win-rc-all-grid,
+  .win-rc-categories-grid,
+  .win-rc-quick-grid,
+  .win-rc-dips-grid,
+  .win-rc-meal-grid {
+    grid-template-columns: 1fr;
+  }
+  .win-rc-hero-h1 {
+    font-size: 36px;
+  }
+  .win-rc-hero-desc {
+    font-size: 14px;
+  }
+}

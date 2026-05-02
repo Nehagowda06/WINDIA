@@ -1,0 +1,296 @@
+@import '../../variables.css';
+
+.filter-sidebar {
+  background: var(--win-dia-white);
+  border-radius: var(--win-dia-radius-xl);
+  border: 1px solid var(--win-dia-gray-light);
+  overflow: hidden;
+  position: sticky;
+  top: 100px;
+}
+
+.filter-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--win-dia-spacing-lg);
+  border-bottom: 1px solid var(--win-dia-gray-light);
+}
+
+.filter-header h3 {
+  margin: 0;
+  font-size: 1.125rem;
+  color: var(--win-dia-text-brown);
+}
+
+.clear-btn {
+  background: none;
+  border: none;
+  color: var(--win-dia-primary);
+  font-weight: 500;
+  font-size: 0.875rem;
+  cursor: pointer;
+  padding: var(--win-dia-spacing-xs) var(--win-dia-spacing-sm);
+  border-radius: var(--win-dia-radius-sm);
+  transition: all var(--win-dia-transition-fast);
+}
+
+.clear-btn:hover {
+  background: var(--win-dia-primary-lighter);
+}
+
+.filter-section {
+  border-bottom: 1px solid var(--win-dia-gray-light);
+}
+
+.filter-section:last-child {
+  border-bottom: none;
+}
+
+.section-header {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--win-dia-spacing-md) var(--win-dia-spacing-lg);
+  background: none;
+  border: none;
+  font-weight: 600;
+  color: var(--win-dia-text-primary);
+  cursor: pointer;
+  transition: background var(--win-dia-transition-fast);
+}
+
+.section-header:hover {
+  background: var(--win-dia-cream);
+}
+
+.section-content {
+  padding: var(--win-dia-spacing-md) var(--win-dia-spacing-lg) var(--win-dia-spacing-lg);
+}
+
+/* Checkbox Styles */
+.checkbox-label {
+  display: flex;
+  align-items: center;
+  gap: var(--win-dia-spacing-sm);
+  padding: var(--win-dia-spacing-xs) 0;
+  cursor: pointer;
+}
+
+.checkbox-label input {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.checkbox-custom {
+  width: 20px;
+  height: 20px;
+  border: 2px solid var(--win-dia-gray-medium);
+  border-radius: var(--win-dia-radius-sm);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: all var(--win-dia-transition-fast);
+  position: relative;
+}
+
+.checkbox-label input:checked + .checkbox-custom {
+  border-color: var(--win-dia-primary);
+}
+
+.checkbox-check {
+  width: 12px;
+  height: 12px;
+  border-radius: 2px;
+  opacity: 0;
+  transition: opacity var(--win-dia-transition-fast);
+}
+
+.checkbox-label input:checked + .checkbox-custom .checkbox-check {
+  opacity: 1;
+}
+
+.flavor-name {
+  display: flex;
+  align-items: center;
+  gap: var(--win-dia-spacing-sm);
+  color: var(--win-dia-text-primary);
+}
+
+.flavor-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+}
+
+/* Price Range Styles */
+.price-inputs {
+  display: flex;
+  align-items: center;
+  gap: var(--win-dia-spacing-sm);
+  margin-bottom: var(--win-dia-spacing-lg);
+}
+
+.price-input-wrapper {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  background: var(--win-dia-cream);
+  border: 1px solid var(--win-dia-gray-light);
+  border-radius: var(--win-dia-radius-md);
+  padding: 0 var(--win-dia-spacing-sm);
+}
+
+.currency {
+  color: var(--win-dia-text-light);
+  font-weight: 500;
+}
+
+.price-input-wrapper input {
+  width: 100%;
+  padding: var(--win-dia-spacing-sm);
+  border: none;
+  background: transparent;
+  outline: none;
+  font-size: 0.875rem;
+}
+
+.price-separator {
+  color: var(--win-dia-text-light);
+}
+
+.price-slider {
+  position: relative;
+  height: 4px;
+  margin: var(--win-dia-spacing-xl) 0 var(--win-dia-spacing-lg);
+}
+
+.slider {
+  position: absolute;
+  width: 100%;
+  height: 4px;
+  background: transparent;
+  -webkit-appearance: none;
+  appearance: none;
+  pointer-events: none;
+}
+
+.slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: var(--win-dia-primary);
+  border: 3px solid var(--win-dia-white);
+  box-shadow: var(--win-dia-shadow-md);
+  cursor: pointer;
+  pointer-events: auto;
+  margin-top: -8px;
+}
+
+.slider::-moz-range-thumb {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: var(--win-dia-primary);
+  border: 3px solid var(--win-dia-white);
+  box-shadow: var(--win-dia-shadow-md);
+  cursor: pointer;
+  pointer-events: auto;
+}
+
+.slider-track {
+  position: absolute;
+  height: 4px;
+  background: var(--win-dia-gray-light);
+  border-radius: var(--win-dia-radius-full);
+  z-index: -1;
+}
+
+.price-presets {
+  display: flex;
+  flex-direction: column;
+  gap: var(--win-dia-spacing-xs);
+}
+
+.price-presets button {
+  background: none;
+  border: 1px solid var(--win-dia-gray-light);
+  padding: var(--win-dia-spacing-sm);
+  border-radius: var(--win-dia-radius-md);
+  font-size: 0.875rem;
+  color: var(--win-dia-text-primary);
+  cursor: pointer;
+  transition: all var(--win-dia-transition-fast);
+  text-align: left;
+}
+
+.price-presets button:hover {
+  background: var(--win-dia-cream);
+  border-color: var(--win-dia-primary);
+}
+
+/* Dietary Styles */
+.dietary-label {
+  padding: var(--win-dia-spacing-sm) 0;
+}
+
+.dietary-name {
+  display: flex;
+  align-items: center;
+  gap: var(--win-dia-spacing-sm);
+}
+
+.dietary-icon {
+  font-size: 1.125rem;
+}
+
+/* Radio Styles */
+.radio-label {
+  display: flex;
+  align-items: center;
+  gap: var(--win-dia-spacing-sm);
+  padding: var(--win-dia-spacing-sm) 0;
+  cursor: pointer;
+}
+
+.radio-label input {
+  position: absolute;
+  opacity: 0;
+}
+
+.radio-custom {
+  width: 20px;
+  height: 20px;
+  border: 2px solid var(--win-dia-gray-medium);
+  border-radius: 50%;
+  position: relative;
+  transition: all var(--win-dia-transition-fast);
+}
+
+.radio-label input:checked + .radio-custom {
+  border-color: var(--win-dia-primary);
+}
+
+.radio-label input:checked + .radio-custom::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 10px;
+  height: 10px;
+  background: var(--win-dia-primary);
+  border-radius: 50%;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .filter-sidebar {
+    position: static;
+  }
+}

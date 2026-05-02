@@ -1,0 +1,9 @@
+{
+  "/page": "app/page.js",
+  "/shop/page": "app/shop/page.js",
+  "/contact/page": "app/contact/page.js",
+  "/our-story/page": "app/our-story/page.js",
+  "/vision/page": "app/vision/page.js",
+  "/recipes/page": "app/recipes/page.js",
+  "/health-benefits/page": "app/health-benefits/page.js"
+}
