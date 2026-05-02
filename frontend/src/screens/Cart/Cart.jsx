@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react'; // ✅ added useEffect
 import { useDispatch, useSelector } from 'react-redux';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
@@ -17,18 +17,30 @@ import {
   FiPercent
 } from 'react-icons/fi';
 import { motion, AnimatePresence } from 'framer-motion';
-import { addToCart, removeFromCart, updateQuantity } from '../../redux/slices/cartSlice';
+import { addToCart, removeFromCart, updateQuantity, setCart } from '../../redux/slices/cartSlice'; // ✅ added setCart
 import toast from 'react-hot-toast';
 import './Cart.css';
 
 const Cart = () => {
   const dispatch = useDispatch();
-  const navigate = useRouter();
+  const router = useRouter(); // ✅ FIXED (was navigate)
   const { cartItems } = useSelector((state) => state.cart);
+
   const [promoCode, setPromoCode] = useState('');
   const [promoApplied, setPromoApplied] = useState(false);
   const [shippingPincode, setShippingPincode] = useState('');
   const [shippingCost, setShippingCost] = useState(0);
+
+  // ✅ LOAD cart ONCE (NO duplication bug)
+  useEffect(() => {
+    const storedCart = JSON.parse(localStorage.getItem('cartItems')) || [];
+    dispatch(setCart(storedCart));
+  }, [dispatch]);
+
+  // ✅ SAVE cart on change
+  useEffect(() => {
+    localStorage.setItem('cartItems', JSON.stringify(cartItems));
+  }, [cartItems]);
 
   // Calculate cart totals
   const subtotal = cartItems.reduce((acc, item) => acc + item.price * item.qty, 0);
@@ -77,7 +89,7 @@ const Cart = () => {
   };
 
   const handleCheckout = () => {
-    router.push('/checkout');
+    router.push('/checkout'); // ✅ FIXED
   };
 
   if (cartItems.length === 0) {
@@ -221,13 +233,11 @@ const Cart = () => {
             <div className="summary-card">
               <h3>Order Summary</h3>
 
-              {/* Subtotal */}
               <div className="summary-row">
                 <span>Subtotal ({cartItems.length} items)</span>
                 <span>₹{subtotal.toFixed(2)}</span>
               </div>
 
-              {/* Promo Code */}
               <div className="promo-section">
                 <div className="promo-input-wrapper">
                   <FiTag className="promo-icon" />
@@ -251,7 +261,6 @@ const Cart = () => {
                 )}
               </div>
 
-              {/* Discount */}
               {promoApplied && (
                 <div className="summary-row discount">
                   <span>Discount (10%)</span>
@@ -259,7 +268,6 @@ const Cart = () => {
                 </div>
               )}
 
-              {/* Shipping */}
               <div className="shipping-section">
                 <div className="shipping-input-wrapper">
                   <FiTruck className="shipping-icon" />
@@ -285,24 +293,20 @@ const Cart = () => {
                 )}
               </div>
 
-              {/* Tax */}
               <div className="summary-row">
                 <span>Estimated Tax (5%)</span>
                 <span>₹{tax.toFixed(2)}</span>
               </div>
 
-              {/* Total */}
               <div className="summary-total">
                 <span>Total</span>
                 <span>₹{total.toFixed(2)}</span>
               </div>
 
-              {/* Checkout Button */}
               <button className="btn-checkout" onClick={handleCheckout}>
                 Proceed to Checkout <FiArrowRight />
               </button>
 
-              {/* Trust Badges */}
               <div className="trust-badges">
                 <div className="trust-item">
                   <FiShield /> Secure Checkout
