@@ -16,6 +16,7 @@ import { fetchProducts } from '../../redux/actions/productActions';
 import './Home.css';
 
 // Image Imports (Production ready with fallbacks)
+const heroBg = "/screens/Home/hero-bg.png";
 const heroImage = "/images/hero-khakhra.png";
 const heritageFarm = "/images/coconut-farm.png";
 const heritageFactory = "/images/factory.png";
@@ -187,7 +188,7 @@ const Home = () => {
       {announcementVisible && (
         <div className="announcement-bar" role="alert">
           <div className="announcement-content">
-            <span className="announcement-text">Free Shipping on orders above ₹499 | Use code: WINDIA10 for 10% off first order</span>
+            <span className="announcement-text">Enjoy Free Shipping on orders above ₹499 | Use code: WINDIA10 for 10% off on first order</span>
             <button 
               className="announcement-close" 
               onClick={() => setAnnouncementVisible(false)}
@@ -202,7 +203,10 @@ const Home = () => {
       {/* Hero Section */}
       <section className="hero" aria-label="Hero section">
         <div className="hero-bg">
-          <div className="hero-bg-image" role="presentation"></div>
+          <div
+  className="hero-bg-image"
+  style={{ backgroundImage: "url('/images/hero-bg.png')" }}
+/>
           <div className="hero-bg-overlay" role="presentation"></div>
         </div>
         <div className="hero-container">

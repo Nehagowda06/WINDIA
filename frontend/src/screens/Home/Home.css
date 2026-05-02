@@ -316,14 +316,11 @@ body {
 
 .home .hero-bg-image {
   position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-image: url('hero-bg.png');
-  background-size: cover;
+  inset: 0;
+  opacity: 1;
   background-position: center;
   background-repeat: no-repeat;
+  background-size: cover;
 }
 
 .home .hero-bg-overlay {
