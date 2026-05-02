@@ -1024,175 +1024,184 @@ body {
 }
 
 /* Innovation Section - Scoped */
-.home .innovation {
-  background: linear-gradient(135deg, var(--background-alt), var(--white));
-  position: relative;
-  overflow: hidden;
+.innovation {
+  padding: 96px 0;
+  background: linear-gradient(180deg, #fff 0%, #fff8f2 100%);
 }
 
-.home .innovation::before {
-  content: '';
-  position: absolute;
-  top: -50%;
-  left: -50%;
-  width: 200%;
-  height: 200%;
-  background: radial-gradient(circle, rgba(var(--primary-rgb), 0.03), transparent 70%);
-  animation: homeRotate 30s linear infinite;
-  pointer-events: none;
-}
-
-.home .innovation-grid {
+.innovation-grid {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 60px;
-  align-items: center;
-  position: relative;
-  z-index: 2;
+  grid-template-columns: 1.05fr 0.95fr;
+  gap: 32px;
+  align-items: stretch;
 }
 
-.home .innovation-content h2 {
-  font-size: 42px;
-  font-weight: 700;
-  color: var(--secondary);
-  margin: 16px 0 24px;
-  line-height: 1.2;
+.innovation-content h2 {
+  margin: 0;
+  font-size: clamp(2rem, 4vw, 3.3rem);
+  line-height: 1.05;
+  color: #2d2d2d;
 }
 
-.home .innovation-content>p {
-  font-size: 16px;
-  color: var(--text-light);
-  margin-bottom: 32px;
+.innovation-content > p {
+  margin: 18px 0 0;
+  max-width: 620px;
+  font-size: 1.02rem;
+  line-height: 1.85;
+  color: #625d58;
 }
 
-.home .innovation-cards {
+.innovation-cards {
+  display: grid;
+  gap: 18px;
+  margin-top: 32px;
+}
+
+.innovation-card {
+  display: grid;
+  grid-template-columns: 72px 1fr;
+  gap: 18px;
+  align-items: start;
+  padding: 22px;
+  border-radius: 24px;
+  background: rgba(255, 255, 255, 0.88);
+  border: 1px solid rgba(232, 106, 74, 0.1);
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.05);
+}
+
+.innovation-number {
+  width: 72px;
+  height: 72px;
   display: flex;
-  flex-direction: column;
-  gap: 20px;
+  align-items: center;
+  justify-content: center;
+  border-radius: 22px;
+  background: linear-gradient(135deg, rgba(232, 106, 74, 0.14), rgba(255, 214, 186, 0.55));
+  color: #d76042;
+  font-size: 1.15rem;
+  font-weight: 800;
+  letter-spacing: 1px;
 }
 
-.home .innovation-card {
+.innovation-text h4 {
+  margin: 0 0 8px;
+  font-size: 1.12rem;
+  color: #2d2d2d;
+}
+
+.innovation-text p {
+  margin: 0;
+  color: #655f59;
+  line-height: 1.75;
+  font-size: 0.96rem;
+}
+
+.innovation-panel {
   display: flex;
   align-items: center;
-  gap: 20px;
-  padding: 20px 25px;
-  background: var(--white);
-  border-radius: var(--radius-lg);
-  transition: all 0.4s cubic-bezier(0.2, 0.9, 0.4, 1.1);
-  border: 1px solid rgba(var(--primary-rgb), 0.1);
+  justify-content: center;
+}
+
+.innovation-panel-card {
+  width: 100%;
+  max-width: 420px;
+  padding: 38px 30px;
+  border-radius: 32px;
+  background: linear-gradient(180deg, #2d2d2d 0%, #3f2f28 100%);
+  color: #fff;
+  box-shadow: 0 30px 70px rgba(40, 28, 22, 0.22);
   position: relative;
   overflow: hidden;
-  cursor: pointer;
 }
 
-.home .innovation-card::before {
+.innovation-panel-card::before {
   content: '';
   position: absolute;
-  top: 0;
-  left: -100%;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(var(--primary-rgb), 0.05), transparent);
-  transition: left 0.6s ease;
+  top: -60px;
+  right: -40px;
+  width: 180px;
+  height: 180px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.08);
 }
 
-.home .innovation-card:hover::before {
-  left: 100%;
-}
-
-.home .innovation-card:hover {
-  transform: translateX(12px) translateY(-5px);
-  box-shadow: var(--shadow-lg);
-  border-color: rgba(var(--primary-rgb), 0.25);
-}
-
-.home .innovation-icon-bg {
-  width: 50px;
-  height: 50px;
-  background: linear-gradient(135deg, var(--primary-light), var(--primary));
-  border-radius: 12px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 18px;
+.innovation-panel-label {
+  display: inline-block;
+  padding: 8px 14px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.12);
+  font-size: 0.76rem;
   font-weight: 800;
-  color: var(--white);
-  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 1px;
 }
 
-.home .innovation-card:hover .innovation-icon-bg {
-  transform: scale(1.1) rotate(5deg);
-  box-shadow: 0 10px 20px rgba(var(--primary-rgb), 0.3);
+.innovation-panel-value {
+  margin-top: 20px;
+  font-size: clamp(3rem, 6vw, 4.8rem);
+  line-height: 1;
+  font-weight: 800;
+  color: #ffb08f;
 }
 
-.home .innovation-text h4 {
-  font-size: 18px;
-  font-weight: 700;
-  color: var(--secondary);
-  margin-bottom: 6px;
+.innovation-panel-card p {
+  margin: 18px 0 0;
+  max-width: 300px;
+  color: rgba(255, 255, 255, 0.82);
+  line-height: 1.8;
+  font-size: 0.98rem;
 }
 
-.home .innovation-text p {
-  font-size: 13px;
-  color: var(--text-light);
-  line-height: 1.5;
-}
-
-.home .innovation-badge {
+.innovation-panel-tags {
   display: flex;
-  justify-content: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 24px;
 }
 
-.home .certification-badge-large {
-  background: linear-gradient(135deg, var(--primary), var(--primary-dark));
-  padding: 50px 40px;
-  border-radius: var(--radius-xl);
-  text-align: center;
-  color: var(--white);
-  position: relative;
-  overflow: hidden;
-  max-width: 350px;
-  margin: 0 auto;
-  transition: all 0.4s ease;
-}
-
-.home .certification-badge-large:hover {
-  transform: scale(1.03);
-  box-shadow: var(--shadow-xl);
-}
-
-.home .certification-badge-large span:first-child {
-  font-size: 14px;
-  letter-spacing: 3px;
-  opacity: 0.9;
+.innovation-panel-tags span {
+  padding: 10px 14px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.12);
+  color: #fff3eb;
+  font-size: 0.76rem;
+  font-weight: 700;
+  letter-spacing: 0.4px;
   text-transform: uppercase;
 }
 
-.home .gi-number {
-  font-size: 64px;
-  font-weight: 800;
-  margin: 20px 0;
-  letter-spacing: -0.02em;
-  background: linear-gradient(135deg, #fff, #ffe0b3);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
+@media (max-width: 1100px) {
+  .innovation-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .innovation-panel {
+    justify-content: flex-start;
+  }
 }
 
-.home .certification-badge-large span:last-child {
-  font-size: 12px;
-  opacity: 0.85;
+@media (max-width: 768px) {
+  .innovation {
+    padding: 78px 0;
+  }
+
+  .innovation-card {
+    grid-template-columns: 1fr;
+  }
+
+  .innovation-number {
+    width: 58px;
+    height: 58px;
+    border-radius: 18px;
+    font-size: 1rem;
+  }
+
+  .innovation-panel-card {
+    padding: 28px 22px;
+    border-radius: 26px;
+  }
 }
 
-.home .badge-shine {
-  position: absolute;
-  top: 0;
-  left: -100%;
-  width: 50%;
-  height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-  animation: homeShine 3s infinite;
-}
 
 /* Featured Products - Scoped */
 .home .featured-products {
