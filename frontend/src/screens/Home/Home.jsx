@@ -1,3 +1,4 @@
+
 'use client';
 
 import React, { useEffect, useRef, useState, useCallback } from 'react';
@@ -165,7 +166,14 @@ const Home = () => {
   const [showBackToTop, setShowBackToTop] = useState(false);
   const [activeTestimonial, setActiveTestimonial] = useState(0);
   const [announcementVisible, setAnnouncementVisible] = useState(true);
-  const [cookieVisible, setCookieVisible] = useState(true);
+  const [cookieVisible, setCookieVisible] = useState(false);
+
+useEffect(() => {
+  const cookieConsent = readPlainStorage('cookieConsent');
+  if (!cookieConsent) {
+    setCookieVisible(true);
+  }
+}, []);
   const [wishlist, setWishlist] = useState({});
   const [cartNotifications, setCartNotifications] = useState({});
 
@@ -246,11 +254,6 @@ const Home = () => {
   useEffect(() => {
     const savedWishlist = readStorage('wishlist', {});
     setWishlist(savedWishlist || {});
-
-    const cookieConsent = readPlainStorage('cookieConsent');
-    if (cookieConsent) {
-      setCookieVisible(false);
-    }
   }, []);
 
   const renderStars = (rating) => '★'.repeat(rating) + '☆'.repeat(5 - rating);
@@ -275,6 +278,7 @@ const Home = () => {
       )}
 
       <section className="hero" aria-label="Hero section">
+
         <div className="hero-bg">
           <div
             className="hero-bg-image"
@@ -314,21 +318,8 @@ const Home = () => {
               </div>
             </div>
           </div>
-
-          <div className="hero-image fade-right">
-            <div className="hero-image-wrapper" />
-          </div>
         </div>
-
-        <div className="hero-wave" aria-hidden="true">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 120" preserveAspectRatio="none">
-            <path
-              d="M0,64L80,58.7C160,53,320,43,480,48C640,53,800,75,960,80C1120,85,1280,75,1360,69.3L1440,64L1440,120L1360,120C1280,120,1120,120,960,120C800,120,640,120,480,120C320,120,160,120,80,120L0,120Z"
-              fill="#FDF3E8"
-            />
-          </svg>
-        </div>
-      </section>
+</section>
 
       <section className="featured-products" aria-label="Featured products">
         <div className="container">
@@ -390,7 +381,12 @@ const Home = () => {
       </section>
 
       <section className="global-reach" aria-label="Global reach section">
-        <div className="global-bg" role="presentation" />
+        <div
+  className="global-bg"
+  role="presentation"
+  style={{ backgroundImage: "url('/images/global-bg.jpeg')" }}
+/>
+
         <div className="container">
           <div className="global-content fade-up">
             <h2>From You,<br />to Anywhere in the World</h2>
@@ -599,7 +595,12 @@ const Home = () => {
       </section>
 
       <section className="founder" aria-label="Founder section">
-        <div className="founder-bg" role="presentation" />
+        <div
+  className="founder-bg"
+  role="presentation"
+  style={{ backgroundImage: "url('/images/founder-bg.jpeg')" }}
+/>
+
         <div className="container">
           <div className="founder-grid">
             <div className="founder-image fade-left">
@@ -720,16 +721,19 @@ const Home = () => {
       </button>
 
       {cookieVisible && (
-        <div className="cookie-consent" role="dialog" aria-label="Cookie consent">
-          <div className="cookie-content">
-            <p>
-              We use cookies to enhance your experience. By continuing, you agree to our{' '}
-              <Link href="/privacy">Privacy Policy</Link>.
-            </p>
-            <button className="cookie-accept" onClick={acceptCookies}>Accept</button>
-          </div>
-        </div>
-      )}
+  <div className="cookie-consent" role="dialog" aria-label="Cookie consent">
+    <div className="cookie-content">
+      <p className="cookie-text">
+        We use cookies to enhance your experience. By continuing, you agree to our{' '}
+        <Link href="/privacy">Privacy Policy</Link>.
+      </p>
+      <button className="cookie-accept" onClick={acceptCookies}>
+        Accept
+      </button>
+    </div>
+  </div>
+)}
+
 
       <footer className="footer">
         <div className="container">
