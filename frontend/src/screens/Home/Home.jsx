@@ -1,4 +1,3 @@
-
 'use client';
 
 import React, { useEffect, useRef, useState, useCallback } from 'react';
@@ -174,6 +173,7 @@ useEffect(() => {
     setCookieVisible(true);
   }
 }, []);
+
   const [wishlist, setWishlist] = useState({});
   const [cartNotifications, setCartNotifications] = useState({});
 
@@ -272,13 +272,11 @@ useEffect(() => {
               aria-label="Close announcement"
             >
               ×
-            </button>
+            </button> 
           </div>
         </div>
       )}
-
       <section className="hero" aria-label="Hero section">
-
         <div className="hero-bg">
           <div
             className="hero-bg-image"
@@ -297,8 +295,9 @@ useEffect(() => {
             </h1>
             <p className="hero-description">
               Experience the perfect blend of tradition and nutrition. Our coconut flour khakhras
-              are crafted to nourish your body and delight your taste buds.
+              Coconut-Infused<br />
             </p>
+            
             <div className="hero-buttons">
               <Link href="/shop" className="btn-primary">Shop Now</Link>
               <Link href="/our-story" className="btn-outline">Our Story</Link>
@@ -319,7 +318,8 @@ useEffect(() => {
             </div>
           </div>
         </div>
-</section>
+      </section>
+      
 
       <section className="featured-products" aria-label="Featured products">
         <div className="container">
@@ -386,7 +386,6 @@ useEffect(() => {
   role="presentation"
   style={{ backgroundImage: "url('/images/global-bg.jpeg')" }}
 />
-
         <div className="container">
           <div className="global-content fade-up">
             <h2>From You,<br />to Anywhere in the World</h2>
@@ -444,6 +443,8 @@ useEffect(() => {
         </div>
       </section>
 
+{/* Problem / Solution Split Section */}
+
       <section className="problem-solution" aria-label="Problem and solution section">
         <div className="container">
           <div className="split-grid">
@@ -454,6 +455,8 @@ useEffect(() => {
                 Today&apos;s market is flooded with products claiming to be healthy, but most are processed
                 with hidden ingredients and misleading claims.
               </p>
+
+              <p>Today's market is flooded with products claiming to be healthy, but most are processed with hidden ingredients and misleading claims.</p>
               <ul className="problem-list">
                 <li>Processed foods with hidden ingredients</li>
                 <li>Low fiber causing digestive issues</li>
@@ -465,10 +468,7 @@ useEffect(() => {
             <div className="solution-card fade-right">
               <div className="card-badge">Solution</div>
               <h3>WIN-DIA Coconut Flour Khakhra</h3>
-              <p>
-                Not just a health label - our khakhra truly works, thanks to naturally high fiber content
-                from coconut flour.
-              </p>
+              <p>Not just a health label - our khakhra truly works, thanks to naturally high fiber content from coconut flour.</p>
               <ul className="solution-list">
                 <li>Genuinely supports gut health</li>
                 <li>Noticeable improvement in digestion</li>
@@ -477,16 +477,21 @@ useEffect(() => {
               </ul>
               <div className="highlight-quote">
                 <p>&quot;WIN-DIA for dine keeps the gut in line&quot;</p>
+                <p>"WIN-DIA for dine keeps the gut in line"</p>
               </div>
             </div>
           </div>
         </div>
       </section>
 
+
+
+
+{/* How It's Made Section */}
       <section className="process" aria-label="Manufacturing process">
         <div className="container">
           <div className="section-header fade-up">
-            <span className="section-label">Craftsmanship</span>
+            <span className="section-label">Craftsmanship</span><br />
             <h2>How It&apos;s Made</h2>
             <p className="section-subtitle">
               From coconut farm to your plate — a journey of quality and care
@@ -512,6 +517,7 @@ useEffect(() => {
         </div>
       </section>
 
+      {/* Trust Indicators Section */}
       <section className="trust" aria-label="Trust indicators">
         <div className="container">
           <div className="section-header fade-up">
@@ -707,7 +713,10 @@ useEffect(() => {
       >
         <div className="whatsapp-icon">
           <svg viewBox="0 0 24 24" width="22" height="22" fill="white" aria-hidden="true">
+
             <path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.527 1.067 3.584l-.824 3.029 3.153-.799c1.043.557 2.217.85 3.418.85 3.18 0 5.767-2.586 5.768-5.766 0-3.18-2.587-5.765-5.768-5.765l.004.001zm0 9.5c-.871 0-1.714-.231-2.452-.663l-2.483.634.689-2.382c-.472-.785-.73-1.679-.73-2.594 0-2.63 2.14-4.77 4.771-4.77 2.63 0 4.771 2.14 4.771 4.77 0 2.63-2.141 4.771-4.771 4.771l.005-.006z" />
+
+            <path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.527 1.067 3.584l-.824 3.029 3.153-.799c1.043.557 2.217.85 3.418.85 3.18 0 5.767-2.586 5.768-5.766 0-3.18-2.587-5.765-5.768-5.765l.004.001zm0 9.5c-.871 0-1.714-.231-2.452-.663l-2.483.634.689-2.382c-.472-.785-.73-1.679-.73-2.594 0-2.63 2.14-4.77 4.771-4.77 2.63 0 4.771 2.14 4.771 4.77 0 2.63-2.141 4.771-4.771 4.771l.005-.006z"/>
           </svg>
         </div>
       </a>
@@ -805,7 +814,8 @@ useEffect(() => {
         </div>
       </footer>
     </div>
-  );
-};
+      );
+    };
+  
 
 export default Home;
