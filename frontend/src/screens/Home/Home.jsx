@@ -253,172 +253,6 @@ const Home = () => {
         </div>
       </section>
 
-      {/* Global Reach Section */}
-      <section className="global-reach" aria-label="Global reach section">
-        <div className="global-bg" role="presentation"></div>
-        <div className="container">
-          <div className="global-content fade-up">
-            <h2>From You,<br />to Anywhere in the World</h2>
-            <p>Love knows no borders with WIN-DIA — now delivering worldwide</p>
-            <div className="global-buttons">
-              <Link href="/shop" className="btn-white">Shop India</Link>
-              <Link href="/international" className="btn-white-outline">International</Link>
-              <Link href="/corporate" className="btn-white-outline">Festive Gifting</Link>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Heritage Section */}
-      <section className="heritage" aria-label="Heritage section">
-        <div className="container">
-          <div className="heritage-grid">
-            <div className="heritage-text fade-left">
-              <span className="section-label">Our Heritage</span>
-              <h2>From Ancient Wisdom<br />to Modern Wellness</h2>
-              <p className="heritage-lead">In ancient cultures, coconut was considered a divine gift, revered for its purity and symbolic connection to the gods.</p>
-              <p>They used coconut as offerings to ensure everyone consumed this amazing fruit. Today, we're reviving this sacred wisdom. WIN-DIA bridges the gap between traditional knowledge and modern nutritional science.</p>
-              <div className="heritage-checklist">
-                <div className="check-item">100% Natural Ingredients</div>
-                <div className="check-item">Traditional Roasting Methods</div>
-                <div className="check-item">No Artificial Preservatives</div>
-              </div>
-              <Link href="/our-story" className="btn-secondary">Discover Our Story</Link>
-            </div>
-            <div className="heritage-images fade-right">
-              <div className="heritage-image-stack">
-                <img src={heritageFarm} alt="Coconut Farm" className="heritage-img-main" loading="lazy" />
-                <img src={heritageFactory} alt="Production Facility" className="heritage-img-overlay" loading="lazy" />
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Why Choose Section - 3 Benefit Cards */}
-      <section className="benefits" aria-label="Benefits section">
-        <div className="benefits-bg" role="presentation"></div>
-        <div className="container">
-          <div className="section-header fade-up">
-            <span className="section-label">Why Choose WIN-DIA</span>
-            <h2>Experience the Difference</h2>
-            <p className="section-subtitle">Scientifically formulated coconut flour khakhras for your wellness journey</p>
-          </div>
-          <div className="benefits-grid">
-            <div className="benefit-card fade-up">
-              <div className="benefit-orb" role="presentation"></div>
-              <span className="benefit-chip">Gut Balance</span>
-              <div className="benefit-stat-wrap">
-                <div className="benefit-stat">4.85g</div>
-                <div className="benefit-stat-label">Dietary Fiber</div>
-              </div>
-              <h3>Improves Digestion</h3>
-              <p>High fiber content promotes healthy gut function and regular bowel movements</p>
-              <div className="benefit-footer">Light crunch, easy digestion</div>
-            </div>
-            <div className="benefit-card fade-up">
-              <div className="benefit-orb" role="presentation"></div>
-              <span className="benefit-chip">Steady Energy</span>
-              <div className="benefit-stat-wrap">
-                <div className="benefit-stat">44</div>
-                <div className="benefit-stat-label">Glycemic Index</div>
-              </div>
-              <h3>Blood Sugar Friendly</h3>
-              <p>Low GI value makes it perfect for diabetes management and steady energy</p>
-              <div className="benefit-footer">Feel-good snacking without spikes</div>
-            </div>
-            <div className="benefit-card fade-up">
-              <div className="benefit-orb" role="presentation"></div>
-              <span className="benefit-chip">Longer Fullness</span>
-              <div className="benefit-stat-wrap">
-                <div className="benefit-stat">22g</div>
-                <div className="benefit-stat-label">Plant Protein</div>
-              </div>
-              <h3>High Protein Content</h3>
-              <p>Keeps you energized and satisfied throughout the day, curbing unhealthy cravings</p>
-              <div className="benefit-footer">Perfect for busy mornings</div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Problem / Solution Split Section */}
-      <section className="problem-solution" aria-label="Problem and solution section">
-        <div className="container">
-          <div className="split-grid">
-            <div className="problem-card fade-left">
-              <div className="card-badge">Problem</div>
-              <h3>The Modern Diet Crisis</h3>
-              <p>Today's market is flooded with products claiming to be healthy, but most are processed with hidden ingredients and misleading claims.</p>
-              <ul className="problem-list">
-                <li>Processed foods with hidden ingredients</li>
-                <li>Low fiber causing digestive issues</li>
-                <li>Misleading health claims on packaging</li>
-                <li>Rising lifestyle diseases</li>
-              </ul>
-            </div>
-            <div className="solution-card fade-right">
-              <div className="card-badge">Solution</div>
-              <h3>WIN-DIA Coconut Flour Khakhra</h3>
-              <p>Not just a health label - our khakhra truly works, thanks to naturally high fiber content from coconut flour.</p>
-              <ul className="solution-list">
-                <li>Genuinely supports gut health</li>
-                <li>Noticeable improvement in digestion</li>
-                <li>Feel light and energized after eating</li>
-                <li>Scientifically tested and certified</li>
-              </ul>
-              <div className="highlight-quote">
-                <p>"WIN-DIA for dine keeps the gut in line"</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Innovation Showcase */}
-      <section className="innovation" aria-label="Innovation section">
-        <div className="container">
-          <div className="innovation-grid">
-            <div className="innovation-content fade-left">
-              <span className="section-label">Innovation</span>
-              <h2>First-of-its-kind<br />in the World</h2>
-              <p>We transform gluten-free from just a label into a real digestive health solution.</p>
-              <div className="innovation-cards">
-                <div className="innovation-card">
-                  <div className="innovation-icon-bg" aria-hidden="true">01</div>
-                  <div className="innovation-text">
-                    <h4>Ingredient Innovation</h4>
-                    <p>Using coconut flour - a by-product adding value to agri-waste</p>
-                  </div>
-                </div>
-                <div className="innovation-card">
-                  <div className="innovation-icon-bg" aria-hidden="true">02</div>
-                  <div className="innovation-text">
-                    <h4>Health-Focused Formula</h4>
-                    <p>Supports gut health, vegan, gluten-free</p>
-                  </div>
-                </div>
-                <div className="innovation-card">
-                  <div className="innovation-icon-bg" aria-hidden="true">03</div>
-                  <div className="innovation-text">
-                    <h4>Shelf-Life Enhancement</h4>
-                    <p>Vacuum packaging extends freshness significantly</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div className="innovation-badge fade-right">
-              <div className="certification-badge-large">
-                <span>NABL LAB TESTED</span>
-                <div className="gi-number">GI = 44</div>
-                <span>CERTIFIED LOW GLYCEMIC INDEX</span>
-                <div className="badge-shine" aria-hidden="true"></div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
       {/* Featured Products Section */}
       <section className="featured-products" aria-label="Featured products">
         <div className="container">
@@ -470,7 +304,103 @@ const Home = () => {
         </div>
       </section>
 
-      {/* How It's Made Section */}
+      {/* Global Reach Section */}
+      <section className="global-reach" aria-label="Global reach section">
+        <div className="global-bg" role="presentation"></div>
+        <div className="container">
+          <div className="global-content fade-up">
+            <h2>From You,<br />to Anywhere in the World</h2>
+            <p>Love knows no borders with WIN-DIA — now delivering worldwide</p>
+            <div className="global-buttons">
+              <Link href="/shop" className="btn-white">Shop India</Link>
+              <Link href="/international" className="btn-white-outline">International</Link>
+              <Link href="/corporate" className="btn-white-outline">Festive Gifting</Link>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="heritage" aria-label="Heritage section">
+  <div className="container">
+    <div className="heritage-grid">
+      <div className="heritage-text fade-left">
+        <span className="section-label">Our Heritage</span>
+        <h2>From Ancient Wisdom to Modern Wellness</h2>
+        <p className="heritage-lead">
+          Coconut has long been valued in Indian tradition as a symbol of purity,
+          nourishment, and well-being.
+        </p>
+        <p>
+          WIN-DIA carries that heritage forward by bringing together traditional
+          food values and a more wellness-focused way of snacking for today’s world.
+        </p>
+
+        <div className="heritage-checklist">
+          <div className="check-item">100% Natural Ingredients</div>
+          <div className="check-item">Traditional Roasting Methods</div>
+          <div className="check-item">No Artificial Preservatives</div>
+        </div>
+
+        <Link href="/our-story" className="btn-secondary">
+          Discover Our Story
+        </Link>
+      </div>
+
+      <div className="heritage-images fade-right">
+        <div className="heritage-image-stack">
+          <img
+            src={heritageFarm}
+            alt="Coconut Farm"
+            className="heritage-img-main"
+            loading="lazy"
+          />
+          <img
+            src={heritageFactory}
+            alt="Production Facility"
+            className="heritage-img-overlay"
+            loading="lazy"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+{/* Problem / Solution Split Section */}
+      <section className="problem-solution" aria-label="Problem and solution section">
+        <div className="container">
+          <div className="split-grid">
+            <div className="problem-card fade-left">
+              <div className="card-badge">Problem</div>
+              <h3>The Modern Diet Crisis</h3>
+              <p>Today's market is flooded with products claiming to be healthy, but most are processed with hidden ingredients and misleading claims.</p>
+              <ul className="problem-list">
+                <li>Processed foods with hidden ingredients</li>
+                <li>Low fiber causing digestive issues</li>
+                <li>Misleading health claims on packaging</li>
+                <li>Rising lifestyle diseases</li>
+              </ul>
+            </div>
+            <div className="solution-card fade-right">
+              <div className="card-badge">Solution</div>
+              <h3>WIN-DIA Coconut Flour Khakhra</h3>
+              <p>Not just a health label - our khakhra truly works, thanks to naturally high fiber content from coconut flour.</p>
+              <ul className="solution-list">
+                <li>Genuinely supports gut health</li>
+                <li>Noticeable improvement in digestion</li>
+                <li>Feel light and energized after eating</li>
+                <li>Scientifically tested and certified</li>
+              </ul>
+              <div className="highlight-quote">
+                <p>"WIN-DIA for dine keeps the gut in line"</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+
+{/* How It's Made Section */}
       <section className="process" aria-label="Manufacturing process">
         <div className="process-bg" role="presentation"></div>
         <div className="container">
@@ -497,6 +427,7 @@ const Home = () => {
           </div>
         </div>
       </section>
+
 
       {/* Trust Indicators Section */}
       <section className="trust" aria-label="Trust indicators">
@@ -673,7 +604,7 @@ const Home = () => {
         aria-label="Chat with us on WhatsApp"
       >
         <div className="whatsapp-icon">
-          <svg viewBox="0 0 24 24" width="28" height="28" fill="white" aria-hidden="true">
+          <svg viewBox="0 0 24 24" width="22" height="22" fill="white" aria-hidden="true">
             <path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.527 1.067 3.584l-.824 3.029 3.153-.799c1.043.557 2.217.85 3.418.85 3.18 0 5.767-2.586 5.768-5.766 0-3.18-2.587-5.765-5.768-5.765l.004.001zm0 9.5c-.871 0-1.714-.231-2.452-.663l-2.483.634.689-2.382c-.472-.785-.73-1.679-.73-2.594 0-2.63 2.14-4.77 4.771-4.77 2.63 0 4.771 2.14 4.771 4.77 0 2.63-2.141 4.771-4.771 4.771l.005-.006z"/>
           </svg>
         </div>
