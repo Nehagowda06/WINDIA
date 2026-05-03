@@ -1,30 +1,32 @@
-import Providers from './Providers';
-import Header from '../src/components/Header/Header';
-import '../src/index.css';
-import '../src/App.css';
+import Providers from "./Providers";
+import Header from "../src/components/Header/Header";
+import { Playfair_Display, Lato } from "next/font/google";
+import "./globals.css";
 
-export const viewport = {
-  width: 'device-width',
-  initialScale: 1,
-}
+const playfair = Playfair_Display({
+  subsets: ["latin"],
+  weight: ["400", "600"],
+  style: ["normal", "italic"],
+  variable: "--font-display",
+  display: "swap",
+});
+
+const lato = Lato({
+  subsets: ["latin"],
+  weight: ["400", "700"],
+  variable: "--font-sans",
+  display: "swap",
+});
 
 export const metadata = {
-  title: 'WIN-DIA | The Divine Healthy Crunch',
-  description: 'Coconut flour khakhras crafted for modern wellness. Gluten-free, low GI, high fiber snacks.',
-  icons: {
-    icon: '/favicon.ico',
-  },
-}
+  title: "WIN-DIA — The Divine Healthy Crunch",
+  description: "India's beloved khakra, reimagined for the world.",
+};
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en">
-      <head>
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        <link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600;1,700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,600&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
-      </head>
-      <body>
+    <html lang="en" className={`${playfair.variable} ${lato.variable}`}>
+      <body className="bg-background text-foreground font-sans">
         <Providers>
           <div className="app">
             <Header />
@@ -35,5 +37,6 @@ export default function RootLayout({ children }) {
         </Providers>
       </body>
     </html>
-  )
+  );
 }
+
