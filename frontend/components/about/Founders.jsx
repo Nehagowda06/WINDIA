@@ -6,20 +6,30 @@ import Image from "next/image";
 /* ── Founder data ─────────────────────────────────────────────── */
 const founders = [
   {
-    id: "arvind",
+    id: "tejaswini",
     img: "/images/hero-khakra.jpg",
     name: "Smt. G. Tejaswini",
-role: "Founder & CEO",
-shortBio: "19+ years entrepreneur transforming traditional foods into global wellness solutions.",
-    fullBio: [/* same as before */],
+    role: "Founder & CEO",
+    shortBio:
+      "19+ years entrepreneur transforming traditional foods into global wellness solutions.",
+    fullBio: [
+      "With over 19 years of entrepreneurial experience as an IOCL dealer managing a ₹24 Cr business, Tejaswini brings strong operational expertise into the food innovation space.",
+      "Driven by a vision to make Indian traditional foods globally relevant, she founded WIN-DIA to bridge the gap between authentic taste and modern nutrition.",
+      "Under her leadership, WIN-DIA is shaping a new category of wellness-driven Indian foods for global markets.",
+    ],
   },
   {
-    id: "priya",
+    id: "teni",
     img: "/images/hero-khakra.jpg",
     name: "Teni Shridhar",
-role: "Head of Innovation",
-shortBio: "Food scientist blending traditional wisdom with modern nutrition science.",
-fullBio: [/* same as before */],
+    role: "Head of Innovation",
+    shortBio:
+      "Food scientist blending traditional wisdom with modern nutrition science.",
+    fullBio: [
+      "A food scientist with expertise in functional ingredients and nutrition science, Teni leads product development at WIN-DIA.",
+      "His work ensures every product is scientifically validated while maintaining authentic taste.",
+      "He focuses on creating formulations that combine traditional wisdom with modern wellness needs.",
+    ],
   },
 ];
 
@@ -88,6 +98,9 @@ function FounderCard({ founder, onOpen }) {
         <p className="mt-1 text-xs font-medium uppercase tracking-[0.2em] text-burnt">
           {founder.role}
         </p>
+        <p className="mt-3 text-sm text-gray-500">
+  {founder.shortBio}
+</p>
         <span
           aria-hidden="true"
           className="mt-4 inline-flex h-7 w-7 items-center justify-center rounded-full text-burnt transition group-hover:translate-y-0.5"
