@@ -1,4 +1,5 @@
-"use client";
+'use client';
+
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { 
@@ -59,59 +60,55 @@ const Shop = () => {
     dispatch(fetchProducts());
   }, [dispatch]);
 
-  const computedFilteredProducts = React.useMemo(() => {
-  let filtered = [...products];
-
-  if (searchQuery) {
-    filtered = filtered.filter((product) =>
-      product.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      product.description?.toLowerCase().includes(searchQuery.toLowerCase())
-    );
-  }
-
-  if (filters.flavor.length > 0) {
-    filtered = filtered.filter((product) =>
-      filters.flavor.some((flavor) => product.name?.includes(flavor))
-    );
-  }
-
-  filtered = filtered.filter(
-    (product) =>
-      product.price >= filters.priceRange.min &&
-      product.price <= filters.priceRange.max
-  );
-
-  if (filters.dietary.length > 0) {
-    filtered = filtered.filter((product) =>
-      filters.dietary.every((pref) => {
-        if (pref === 'Gluten-Free') return product.isGlutenFree;
-        if (pref === 'Vegan') return product.isVegan;
-        if (pref === 'Low GI') return product.isLowGI;
-        return true;
-      })
-    );
-  }
-
-  switch (filters.sortBy) {
-    case 'price-low':
-      filtered.sort((a, b) => a.price - b.price);
-      break;
-    case 'price-high':
-      filtered.sort((a, b) => b.price - a.price);
-      break;
-    case 'name':
-      filtered.sort((a, b) => a.name.localeCompare(b.name));
-      break;
-    default:
-      break;
-  }
-
-  return filtered;
-}, [products, filters, searchQuery]);
-
   useEffect(() => {
-  setFilteredProducts(computedFilteredProducts);
-}, [computedFilteredProducts]);
+    let filtered = [...products];
+
+    if (searchQuery) {
+      filtered = filtered.filter((product) =>
+        product.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
+        product.description?.toLowerCase().includes(searchQuery.toLowerCase())
+      );
+    }
+
+    if (filters.flavor.length > 0) {
+      filtered = filtered.filter((product) =>
+        filters.flavor.some((flavor) => product.name?.includes(flavor))
+      );
+    }
+
+    filtered = filtered.filter(
+      (product) =>
+        product.price >= filters.priceRange.min &&
+        product.price <= filters.priceRange.max
+    );
+
+    if (filters.dietary.length > 0) {
+      filtered = filtered.filter((product) =>
+        filters.dietary.every((pref) => {
+          if (pref === 'Gluten-Free') return product.isGlutenFree;
+          if (pref === 'Vegan') return product.isVegan;
+          if (pref === 'Low GI') return product.isLowGI;
+          return true;
+        })
+      );
+    }
+
+    switch (filters.sortBy) {
+      case 'price-low':
+        filtered.sort((a, b) => a.price - b.price);
+        break;
+      case 'price-high':
+        filtered.sort((a, b) => b.price - a.price);
+        break;
+      case 'name':
+        filtered.sort((a, b) => a.name.localeCompare(b.name));
+        break;
+      default:
+        break;
+    }
+
+    setFilteredProducts(filtered);
+  }, [products, filters, searchQuery]);
 
   const handleFlavorChange = (flavor) => {
     setFilters((prev) => ({
@@ -462,16 +459,11 @@ const Shop = () => {
               <div className={`products-container ${viewMode}`}>
                 {filteredProducts.length > 0 ? (
                   filteredProducts.map((product, index) => (
-                    <ProductCard 
-  key={product._id} 
-  product={product} 
-  index={index}
-  viewMode={viewMode} /* FIX */
-/>
+                    <ProductCard key={product._id} product={product} index={index} />
                   ))
                 ) : (
                   <div className="no-products">
-                    <h3>No Things Found</h3>
+                    <h3>No Thins Found</h3>
                     <p>Try adjusting your filters or search</p>
                     <button className="btn btn-primary" onClick={clearFilters}>
                       Clear Filters

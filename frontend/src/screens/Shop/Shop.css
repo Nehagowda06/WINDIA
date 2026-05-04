@@ -13,8 +13,9 @@
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  padding: calc(var(--win-dia-spacing-4xl) + 90px) 0 var(--win-dia-spacing-4xl);
+  padding: calc(var(--win-dia-spacing-4xl) + 80px) 0 var(--win-dia-spacing-4xl);
   overflow: hidden;
+  margin-top: 90px;
 }
 
 /* REMOVED - Subtle texture overlay */
@@ -162,7 +163,6 @@
   max-width: 700px;
   margin-left: auto;
   margin-right: auto;
-  gap: var(--win-dia-spacing-sm);
 }
 
 .hero-stat-card {
@@ -214,7 +214,6 @@
 /* Flavor Pills */
 .hero-flavor-filters {
   margin-bottom: var(--win-dia-spacing-xl);
-  margin-bottom: var(--win-dia-spacing-lg);
 }
 
 .filter-label {
@@ -409,8 +408,6 @@
   align-self: start;
   transition: transform var(--win-dia-transition-base), opacity var(--win-dia-transition-base);
   border: 1px solid var(--win-dia-gray-light);
-  max-height: calc(100vh - 120px);
-  overflow-y: auto;
 }
 
 .filter-header {
@@ -722,8 +719,6 @@
     opacity: 0;
     overflow-y: auto;
     border-radius: 0;
-    max-height: 100vh;
-    overflow-y: auto;
   }
 
   .filter-sidebar.active {
@@ -792,36 +787,4 @@
   .filter-sidebar {
     max-width: 100%;
   }
-}
-
-/* ==================== LIST VIEW FIX ==================== */
-
-.products-container.list {
-  display: flex;
-  flex-direction: column;
-  gap: var(--win-dia-spacing-lg);
-}
-
-.products-container.list .product-card {
-  display: flex;
-  flex-direction: row;
-  align-items: stretch;
-  height: 180px;
-}
-
-.products-container.list .product-card img {
-  width: 200px;
-  height: 100%;
-  object-fit: cover;
-}
-
-.products-container.list .product-info {
-  flex: 1;
-  padding: var(--win-dia-spacing-lg);
-}
-
-.products-container,
-.product-card {
-  max-width: 100%;
-  overflow: hidden;
 }
