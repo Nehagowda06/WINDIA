@@ -14,7 +14,6 @@ import {
   FiShield,
   FiClock,
   FiCreditCard,
-  FiSmartphone,
   FiGlobe,
   FiTag,
   FiChevronRight,
@@ -30,7 +29,7 @@ import './Checkout.css';
 
 const Checkout = () => {
   const dispatch = useDispatch();
-  const navigate = useRouter();
+  const router = useRouter(); // ✅ Fixed: was `navigate`, but used as `router` everywhere
   const { cartItems, shippingAddress } = useSelector((state) => state.cart);
   const { user } = useSelector((state) => state.user);
 
@@ -41,8 +40,8 @@ const Checkout = () => {
   const [couponCode, setCouponCode] = useState('');
   const [couponApplied, setCouponApplied] = useState(false);
   const [orderNotes, setOrderNotes] = useState('');
+  const [selectedDelivery, setSelectedDelivery] = useState('standard');
 
-  // Mock addresses
   const [addresses, setAddresses] = useState([
     {
       _id: '1',
@@ -68,7 +67,6 @@ const Checkout = () => {
     }
   ]);
 
-  // New address form state
   const [newAddress, setNewAddress] = useState({
     type: 'home',
     name: '',
@@ -91,28 +89,22 @@ const Checkout = () => {
   const tax = (subtotal - discount) * 0.05;
   const total = subtotal - discount + tax + shippingCost;
 
-  // Payment methods
   const paymentMethods = [
     { id: 'razorpay', name: 'Razorpay', icon: FiCreditCard, description: 'Cards, UPI, NetBanking, Wallet' },
     { id: 'cod', name: 'Cash on Delivery', icon: FiPackage, description: 'Pay when you receive' }
   ];
 
-  // Delivery options
   const deliveryOptions = [
     { id: 'standard', name: 'Standard Delivery', time: '3-5 business days', cost: shippingCost, icon: FiTruck },
     { id: 'express', name: 'Express Delivery', time: '1-2 business days', cost: shippingCost + 100, icon: FiClock }
   ];
-  const [selectedDelivery, setSelectedDelivery] = useState('standard');
 
   const handleAddressSelect = (addressId) => {
     setSelectedAddress(addressId);
   };
 
   const handleAddAddress = () => {
-    const address = {
-      ...newAddress,
-      _id: Date.now().toString()
-    };
+    const address = { ...newAddress, _id: Date.now().toString() };
     setAddresses([...addresses, address]);
     setSelectedAddress(address._id);
     setShowAddressForm(false);
@@ -150,7 +142,6 @@ const Checkout = () => {
 
   const handlePlaceOrder = () => {
     dispatch(savePaymentMethod(paymentMethod));
-    
     const orderData = {
       orderItems: cartItems,
       shippingAddress: addresses.find(addr => addr._id === selectedAddress),
@@ -160,14 +151,13 @@ const Checkout = () => {
       shippingPrice: deliveryOptions.find(d => d.id === selectedDelivery)?.cost || shippingCost,
       totalPrice: total + (selectedDelivery === 'express' ? 100 : 0),
     };
-
     dispatch(createOrder(orderData));
     toast.success('Order placed successfully!');
-    router.push('/order-confirmation');
+    router.push('/order-confirmation'); // ✅ Fixed: router is now correctly defined
   };
 
   const getAddressTypeIcon = (type) => {
-    switch(type) {
+    switch (type) {
       case 'home': return FiHome;
       case 'office': return FiBriefcase;
       default: return FiMapPin;
@@ -178,7 +168,7 @@ const Checkout = () => {
     return (
       <div className="checkout-page">
         <div className="container">
-          <motion.div 
+          <motion.div
             className="checkout-empty"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -200,8 +190,9 @@ const Checkout = () => {
   return (
     <div className="checkout-page">
       <div className="container">
+
         {/* Checkout Header */}
-        <motion.div 
+        <motion.div
           className="checkout-header"
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -210,7 +201,7 @@ const Checkout = () => {
             <FiArrowLeft /> Back to Cart
           </Link>
           <h1>Checkout</h1>
-          
+
           {/* Progress Steps */}
           <div className="checkout-steps">
             <div className={`step ${currentStep >= 1 ? 'active' : ''} ${currentStep > 1 ? 'completed' : ''}`}>
@@ -233,15 +224,17 @@ const Checkout = () => {
         </motion.div>
 
         <div className="checkout-layout">
+
           {/* Main Content */}
-          <motion.div 
+          <motion.div
             className="checkout-main"
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ delay: 0.1 }}
           >
-            {/* Step 1: Shipping Address */}
             <AnimatePresence mode="wait">
+
+              {/* Step 1: Shipping Address */}
               {currentStep === 1 && (
                 <motion.div
                   key="step1"
@@ -253,7 +246,7 @@ const Checkout = () => {
                   <div className="section-header">
                     <h2>Delivery Address</h2>
                     {!showAddressForm && (
-                      <button 
+                      <button
                         className="btn-add-address"
                         onClick={() => setShowAddressForm(true)}
                       >
@@ -264,7 +257,7 @@ const Checkout = () => {
 
                   {/* Address Form */}
                   {showAddressForm && (
-                    <motion.div 
+                    <motion.div
                       className="address-form"
                       initial={{ opacity: 0, height: 0 }}
                       animate={{ opacity: 1, height: 'auto' }}
@@ -274,15 +267,15 @@ const Checkout = () => {
                         <div className="form-group">
                           <label>Address Type</label>
                           <div className="address-type-selector">
-                            <button 
+                            <button
                               className={`type-btn ${newAddress.type === 'home' ? 'active' : ''}`}
-                              onClick={() => setNewAddress({...newAddress, type: 'home'})}
+                              onClick={() => setNewAddress({ ...newAddress, type: 'home' })}
                             >
                               <FiHome /> Home
                             </button>
-                            <button 
+                            <button
                               className={`type-btn ${newAddress.type === 'office' ? 'active' : ''}`}
-                              onClick={() => setNewAddress({...newAddress, type: 'office'})}
+                              onClick={() => setNewAddress({ ...newAddress, type: 'office' })}
                             >
                               <FiBriefcase /> Office
                             </button>
@@ -293,30 +286,30 @@ const Checkout = () => {
                       <div className="form-row">
                         <div className="form-group">
                           <label>Full Name</label>
-                          <input 
-                            type="text" 
+                          <input
+                            type="text"
                             placeholder="Enter your full name"
                             value={newAddress.name}
-                            onChange={(e) => setNewAddress({...newAddress, name: e.target.value})}
+                            onChange={(e) => setNewAddress({ ...newAddress, name: e.target.value })}
                           />
                         </div>
                         <div className="form-group">
                           <label>Phone Number</label>
-                          <input 
-                            type="tel" 
+                          <input
+                            type="tel"
                             placeholder="10-digit mobile number"
                             value={newAddress.phone}
-                            onChange={(e) => setNewAddress({...newAddress, phone: e.target.value})}
+                            onChange={(e) => setNewAddress({ ...newAddress, phone: e.target.value })}
                           />
                         </div>
                       </div>
 
                       <div className="form-group">
                         <label>Street Address</label>
-                        <textarea 
+                        <textarea
                           placeholder="House/Flat No., Street, Landmark"
                           value={newAddress.street}
-                          onChange={(e) => setNewAddress({...newAddress, street: e.target.value})}
+                          onChange={(e) => setNewAddress({ ...newAddress, street: e.target.value })}
                           rows="2"
                         />
                       </div>
@@ -324,18 +317,18 @@ const Checkout = () => {
                       <div className="form-row">
                         <div className="form-group">
                           <label>City</label>
-                          <input 
-                            type="text" 
+                          <input
+                            type="text"
                             placeholder="City"
                             value={newAddress.city}
-                            onChange={(e) => setNewAddress({...newAddress, city: e.target.value})}
+                            onChange={(e) => setNewAddress({ ...newAddress, city: e.target.value })}
                           />
                         </div>
                         <div className="form-group">
                           <label>State</label>
-                          <select 
+                          <select
                             value={newAddress.state}
-                            onChange={(e) => setNewAddress({...newAddress, state: e.target.value})}
+                            onChange={(e) => setNewAddress({ ...newAddress, state: e.target.value })}
                           >
                             <option value="Karnataka">Karnataka</option>
                             <option value="Tamil Nadu">Tamil Nadu</option>
@@ -346,22 +339,22 @@ const Checkout = () => {
                         </div>
                         <div className="form-group">
                           <label>Pincode</label>
-                          <input 
-                            type="text" 
+                          <input
+                            type="text"
                             placeholder="6-digit pincode"
                             maxLength="6"
                             value={newAddress.pincode}
-                            onChange={(e) => setNewAddress({...newAddress, pincode: e.target.value})}
+                            onChange={(e) => setNewAddress({ ...newAddress, pincode: e.target.value })}
                           />
                         </div>
                       </div>
 
                       <div className="form-group checkbox-group">
                         <label className="checkbox-label">
-                          <input 
+                          <input
                             type="checkbox"
                             checked={newAddress.isDefault}
-                            onChange={(e) => setNewAddress({...newAddress, isDefault: e.target.checked})}
+                            onChange={(e) => setNewAddress({ ...newAddress, isDefault: e.target.checked })}
                           />
                           <span className="checkbox-custom"></span>
                           <span>Set as default address</span>
@@ -369,16 +362,10 @@ const Checkout = () => {
                       </div>
 
                       <div className="form-actions">
-                        <button 
-                          className="btn-cancel"
-                          onClick={() => setShowAddressForm(false)}
-                        >
+                        <button className="btn-cancel" onClick={() => setShowAddressForm(false)}>
                           Cancel
                         </button>
-                        <button 
-                          className="btn-save"
-                          onClick={handleAddAddress}
-                        >
+                        <button className="btn-save" onClick={handleAddAddress}>
                           Save Address
                         </button>
                       </div>
@@ -391,7 +378,7 @@ const Checkout = () => {
                       {addresses.map((address) => {
                         const TypeIcon = getAddressTypeIcon(address.type);
                         return (
-                          <motion.div 
+                          <motion.div
                             key={address._id}
                             className={`address-card ${selectedAddress === address._id ? 'selected' : ''}`}
                             onClick={() => handleAddressSelect(address._id)}
@@ -417,7 +404,14 @@ const Checkout = () => {
                                 <p>{address.city}, {address.state} - {address.pincode}</p>
                                 <p className="address-phone">{address.phone}</p>
                               </div>
-                              <button className="btn-edit-address">
+                              {/* ✅ Fixed: stopPropagation prevents click bubbling to parent div */}
+                              <button
+                                className="btn-edit-address"
+                                onClick={(e) => {
+                                  e.stopPropagation();
+                                  // TODO: wire up your edit handler here
+                                }}
+                              >
                                 <FiEdit3 /> Edit
                               </button>
                             </div>
@@ -430,7 +424,7 @@ const Checkout = () => {
                   {/* Order Notes */}
                   <div className="order-notes-section">
                     <label>Order Notes (Optional)</label>
-                    <textarea 
+                    <textarea
                       placeholder="Any special instructions for delivery..."
                       value={orderNotes}
                       onChange={(e) => setOrderNotes(e.target.value)}
@@ -439,7 +433,7 @@ const Checkout = () => {
                   </div>
 
                   <div className="section-footer">
-                    <button 
+                    <button
                       className="btn-proceed"
                       onClick={handleProceedToPayment}
                       disabled={!selectedAddress}
@@ -470,7 +464,7 @@ const Checkout = () => {
                       {deliveryOptions.map((option) => {
                         const OptionIcon = option.icon;
                         return (
-                          <motion.div 
+                          <motion.div
                             key={option.id}
                             className={`delivery-card ${selectedDelivery === option.id ? 'selected' : ''}`}
                             onClick={() => setSelectedDelivery(option.id)}
@@ -504,7 +498,7 @@ const Checkout = () => {
                       {paymentMethods.map((method) => {
                         const MethodIcon = method.icon;
                         return (
-                          <motion.div 
+                          <motion.div
                             key={method.id}
                             className={`payment-card ${paymentMethod === method.id ? 'selected' : ''}`}
                             onClick={() => setPaymentMethod(method.id)}
@@ -535,26 +529,21 @@ const Checkout = () => {
                   </div>
 
                   <div className="section-footer">
-                    <button 
-                      className="btn-back"
-                      onClick={() => setCurrentStep(1)}
-                    >
+                    <button className="btn-back" onClick={() => setCurrentStep(1)}>
                       <FiArrowLeft /> Back
                     </button>
-                    <button 
-                      className="btn-proceed"
-                      onClick={handlePlaceOrder}
-                    >
+                    <button className="btn-proceed" onClick={handlePlaceOrder}>
                       Place Order <FiChevronRight />
                     </button>
                   </div>
                 </motion.div>
               )}
+
             </AnimatePresence>
           </motion.div>
 
           {/* Order Summary Sidebar */}
-          <motion.div 
+          <motion.div
             className="checkout-sidebar"
             initial={{ opacity: 0, x: 20 }}
             animate={{ opacity: 1, x: 0 }}
@@ -576,6 +565,7 @@ const Checkout = () => {
               <div className="order-items-mini">
                 <div className="items-header">
                   <span>Items ({cartItems.length})</span>
+                  {/* ✅ Fixed: router.push now works correctly */}
                   <button onClick={() => router.push('/cart')}>Edit</button>
                 </div>
                 <div className="items-list">
@@ -664,12 +654,16 @@ const Checkout = () => {
                 <div className="address-summary-content">
                   <p className="address-name">{addresses.find(a => a._id === selectedAddress)?.name}</p>
                   <p>{addresses.find(a => a._id === selectedAddress)?.street}</p>
-                  <p>{addresses.find(a => a._id === selectedAddress)?.city}, {addresses.find(a => a._id === selectedAddress)?.state}</p>
+                  <p>
+                    {addresses.find(a => a._id === selectedAddress)?.city},{' '}
+                    {addresses.find(a => a._id === selectedAddress)?.state}
+                  </p>
                   <button onClick={() => setCurrentStep(1)}>Change</button>
                 </div>
               </div>
             )}
           </motion.div>
+
         </div>
       </div>
     </div>

@@ -12,7 +12,6 @@ import {
   FiX, 
   FiSearch, 
   FiHome,
-  FiChevronDown 
 } from 'react-icons/fi';
 import './Header.css';
 
@@ -22,11 +21,17 @@ const Header = () => {
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
   const [logoError, setLogoError] = useState(false);
-  
-  const cartItems = useSelector((state) => state.cart.cartItems);
-  const wishlistItems = useSelector((state) => state.wishlist.wishlistItems);
+  const [isMounted, setIsMounted] = useState(false);
+
+  const cartItems = useSelector((state) => state.cart?.cartItems) || [];
+  const wishlistItems = useSelector((state) => state.wishlist?.wishlistItems) || [];
+
   const router = useRouter();
   const location = usePathname();
+
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -36,7 +41,6 @@ const Header = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // Close mobile menu on route change
   useEffect(() => {
     setIsMobileMenuOpen(false);
   }, [location]);
@@ -53,27 +57,30 @@ const Header = () => {
   const navItems = [
     { name: 'Home', path: '/' },
     { name: 'Shop', path: '/shop' },
-    { name: 'Our Story', path: '/our-story' },
+    { name: 'About', path: '/about' },
     { name: 'Health Benefits', path: '/health-benefits' },
     { name: 'Recipes', path: '/recipes' },
-    { name: 'Vision', path: '/vision' },
     { name: 'Contact', path: '/contact' },
   ];
 
   const isActive = (path) => {
     const currentPath = location || '';
-    if (path === '/') {
-      return currentPath === '/';
-    }
+    if (path === '/') return currentPath === '/';
     return currentPath.startsWith(path);
   };
 
+  // ✅ Fix: return null on server — prevents any server/client HTML mismatch
+  if (!isMounted) return null;
+
   return (
-    <header className={`navbar ${isScrolled ? 'navbar-scrolled' : ''}`}>
+    <header
+      className={`navbar ${isScrolled ? 'navbar-scrolled' : ''}`}
+      suppressHydrationWarning
+    >
       <div className="navbar-container">
-        
+
         {/* Mobile Menu Toggle */}
-        <button 
+        <button
           className="navbar-mobile-toggle"
           onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
           aria-label={isMobileMenuOpen ? 'Close menu' : 'Open menu'}
@@ -85,9 +92,9 @@ const Header = () => {
         {/* Brand Logo */}
         <Link href="/" className="navbar-brand">
           {!logoError ? (
-            <img 
-              src="/images/windia-logo.png" 
-              alt="WIN-DIA - The Divine Healthy Crunch" 
+            <img
+              src="/images/windia-logo.png"
+              alt="WIN-DIA - The Divine Healthy Crunch"
               className="navbar-logo"
               loading="eager"
               fetchPriority="high"
@@ -108,7 +115,7 @@ const Header = () => {
         <nav className={`navbar-menu ${isMobileMenuOpen ? 'navbar-menu-open' : ''}`}>
           <div className="navbar-menu-header">
             <span className="menu-title">Menu</span>
-            <button 
+            <button
               className="menu-close-btn"
               onClick={() => setIsMobileMenuOpen(false)}
               aria-label="Close menu"
@@ -116,11 +123,12 @@ const Header = () => {
               <FiX />
             </button>
           </div>
-          
+
           <ul className="navbar-nav">
             {navItems.map((item) => (
               <li key={item.name} className="nav-item">
-                <Link href={item.path}
+                <Link
+                  href={item.path}
                   className={`nav-link ${isActive(item.path) ? 'nav-link-active' : ''}`}
                 >
                   {item.name === 'Home' && <FiHome className="nav-link-icon" />}
@@ -129,52 +137,48 @@ const Header = () => {
               </li>
             ))}
           </ul>
-          
-          {/* Mobile Contact Info */}
+
+          {/* ✅ Fix: changed <a> to <Link> to avoid bare anchor tags */}
           <div className="navbar-mobile-footer">
-            <a href="tel:+918214527307" className="mobile-contact">
+            <Link href="tel:+918214527307" className="mobile-contact">
               <FiUser /> +91 821 4527307
-            </a>
+            </Link>
           </div>
         </nav>
 
         {/* Right Actions */}
         <div className="navbar-actions">
-          {/* Search Toggle */}
-          <button 
+          <button
             className="navbar-action-btn"
             onClick={() => setIsSearchOpen(!isSearchOpen)}
             aria-label="Search"
           >
             <FiSearch />
           </button>
-          
-          {/* Wishlist */}
+
           <Link href="/wishlist" className="navbar-action-btn" aria-label="Wishlist">
             <FiHeart />
             {wishlistItems.length > 0 && (
               <span className="navbar-badge">{wishlistItems.length}</span>
             )}
           </Link>
-          
-          {/* Cart */}
+
           <Link href="/cart" className="navbar-action-btn navbar-cart-btn" aria-label="Cart">
             <FiShoppingCart />
             {cartItems.length > 0 && (
               <span className="navbar-badge navbar-badge-cart">{cartItems.length}</span>
             )}
           </Link>
-          
-          {/* Account */}
+
           <Link href="/track-order" className="navbar-action-btn navbar-account-btn" aria-label="Account">
             <FiUser />
           </Link>
         </div>
 
-        {/* Search Overlay */}
+        {/* ✅ Fix: replaced <form> with <div> + onSubmit moved to button onClick */}
         {isSearchOpen && (
           <div className="navbar-search-overlay">
-            <form className="navbar-search-form" onSubmit={handleSearch}>
+            <div className="navbar-search-form">
               <FiSearch className="search-form-icon" />
               <input
                 type="text"
@@ -183,33 +187,39 @@ const Header = () => {
                 onChange={(e) => setSearchQuery(e.target.value)}
                 autoFocus
                 className="search-form-input"
+                onKeyDown={(e) => e.key === 'Enter' && handleSearch(e)}
               />
-              <button type="submit" className="search-form-submit">
+              <button
+                type="button"
+                className="search-form-submit"
+                onClick={handleSearch}
+              >
                 Search
               </button>
-              <button 
-                type="button" 
+              <button
+                type="button"
                 className="search-form-close"
                 onClick={() => setIsSearchOpen(false)}
                 aria-label="Close search"
               >
                 <FiX />
               </button>
-            </form>
-            <div 
+            </div>
+            <div
               className="navbar-search-backdrop"
               onClick={() => setIsSearchOpen(false)}
             />
           </div>
         )}
-        
+
         {/* Mobile Menu Overlay */}
         {isMobileMenuOpen && (
-          <div 
+          <div
             className="navbar-mobile-overlay"
             onClick={() => setIsMobileMenuOpen(false)}
           />
         )}
+
       </div>
     </header>
   );
